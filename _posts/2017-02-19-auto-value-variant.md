@@ -6,7 +6,7 @@ title: auto-value-variant
 ## An AutoValue Extension
 
 
-{% highlight java %}
+{% highlight java linenos %}
 public class Album {
 
     private String mTitle;
