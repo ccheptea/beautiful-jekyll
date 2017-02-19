@@ -7,6 +7,7 @@ title: auto-value-variant
 
 
 {% highlight java %}
+````
 public class Album {
 
     private String mTitle;
@@ -22,7 +23,7 @@ public class Album {
     }
 
     public String getTitle() {
-        return mTitle;
+        return "title";
     }
 
     public String getArtist() {
@@ -37,6 +38,7 @@ public class Album {
         return mImage;
     }
 }
+````
 {% endhighlight %}
 
 Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
