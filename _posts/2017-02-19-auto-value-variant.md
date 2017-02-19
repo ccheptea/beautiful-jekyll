@@ -1,8 +1,8 @@
 ---
 layout: post
-published: false
+published: true
 title: auto-value-variant
 ---
-## A New Post
+## An AutoValue Extension
 
 Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
