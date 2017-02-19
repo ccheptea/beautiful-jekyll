@@ -6,17 +6,37 @@ title: auto-value-variant
 ## An AutoValue Extension
 
 
-````
-private static Set<String> getAnnotations(ExecutableElement element) {
-	Set<String> set = new LinkedHashSet<>();
+{% highlight java %}
+public class Album {
 
-	List<? extends AnnotationMirror> annotations = element.getAnnotationMirrors();
-	for (AnnotationMirror annotation : annotations) {
-		set.add(annotation.getAnnotationType().asElement().getSimpleName().toString());
-	}
+    private String mTitle;
+    private String mArtist;
+    private String mDescription;
+    private String mImage;
 
-	return Collections.unmodifiableSet(set);
+    public Album(String title, String artist, String description, String image) {
+        mTitle = title;
+        mArtist = artist;
+        mDescription = description;
+        mImage = image;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public String getArtist() {
+        return mArtist;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public String getImage() {
+        return mImage;
+    }
 }
-````
+{% endhighlight %}
 
 Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
