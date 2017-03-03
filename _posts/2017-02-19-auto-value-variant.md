@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 title: auto-value-variant
 ---
 ## An AutoValue Extension
