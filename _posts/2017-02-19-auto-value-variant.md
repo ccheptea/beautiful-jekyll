@@ -12,9 +12,9 @@ I just started a new Android project and decided to get my hands dirty with some
 public abstract class Wand{
     abstract String owner();
     abstract String flexibility();
-	abstract String wood();
     abstract float length();
     abstract String core();
+    abstract String wood();
 }
 ```
 
