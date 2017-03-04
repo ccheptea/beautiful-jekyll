@@ -37,7 +37,7 @@ Does it do the job? Yes. Do you like it? Hopefully not. What if you want a list 
 ```java
 public boolean sameWoodAndCore(String wand1, String wand2){
 	return (wand1.wood() == null ? wand2.wood() == null : wand1.wood().equals(wand2.wood()))
-    	&& (wand1.core() == null ? wand2.core() == null : wand1.core().equals(wand2.core()))
+        && (wand1.core() == null ? wand2.core() == null : wand1.core().equals(wand2.core()))
 }
 
 ...
@@ -45,7 +45,7 @@ public boolean sameWoodAndCore(String wand1, String wand2){
 Wand hpWand = new AutoValue_Wand("Harry Potter", "Holly", "Pheonix feather", 11 "Nice and Supple");
 
 for(Wand wand : wands){
-	if(sameWoodAndCore(hpWand, wand)){
+    if(sameWoodAndCore(hpWand, wand)){
     	likeHarrys.add(wand);
     }
 }
@@ -61,7 +61,7 @@ Thankfully, our model is taken care of by ``@AutoValue``. When you start using i
 Wand harrysWand = new AutoValue_Wand("Harry Potter", "Holly", "Pheonix feather", 11, "Nice and Supple");
 
 for(Wand wand : wands){
-	if(harrysWand.like(wand)){
+    if(harrysWand.like(wand)){
     	likeHarrys.add(wand);
     }
 }
@@ -108,7 +108,7 @@ Then filter.
 
 ```java
 for(Wand wand : wands){
-	if(harrysWand.like(wand, "material")){
+    if(harrysWand.like(wand, "material")){
     	likeHarrysWandMaterial.add(wand);
     }
     
