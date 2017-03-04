@@ -36,7 +36,7 @@ Does it do the job? Yes. Do you like it? Hopefully not. What if you want a list 
 
 ```java
 public boolean sameWoodAndCore(String wand1, String wand2){
-    return (wand1.wood() == null ? wand2.wood() == null : wand1.wood().equals(wand2.wood()))
+  return (wand1.wood() == null ? wand2.wood() == null : wand1.wood().equals(wand2.wood()))
         && (wand1.core() == null ? wand2.core() == null : wand1.core().equals(wand2.core()))
 }
 
@@ -55,7 +55,7 @@ This one fixed it, but, sadly, there are **too many paranthesis** and **null che
 
 ## A solution
 
-Thankfully, our model is taken care of by ``@AutoValue``. When you start using it you get to know the magic of ``AutoValueExtension``. There are many extensions. If you haven't seen any, check Ryan Harter's [article](http://ryanharter.com/blog/2016/05/16/autovalue-extensions/). Now as I said at the beginning, I wanted to get my hands dirty. So, I wrote yet another extension called [auto-value-variant](https://github.com/ccheptea/auto-value-variant). I needed it to be easily integrated, make my code cleaner and easier to maintain. In short, I ended up this:
+Thankfully, our model is taken care of by ``@AutoValue``. When you start using it you get to know the magic of ``AutoValueExtension``. There are many extensions. If you haven't seen any, check Ryan Harter's [article](http://ryanharter.com/blog/2016/05/16/autovalue-extensions/). Now as I said at the beginning, I wanted to get my hands dirty. So, I wrote yet another extension called [auto-value-variant](https://github.com/ccheptea/auto-value-variant) that handles the ugly code for us. I needed it to be easily integrated, make my code cleaner and easier to maintain. In short, I ended up this:
 
 ```java
 Wand harrysWand = new AutoValue_Wand("Harry Potter", "Holly", "Pheonix feather", 11, "Nice and Supple");
