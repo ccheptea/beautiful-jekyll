@@ -643,15 +643,22 @@ table tr td :last-child {
 /* --- Code blocks --- */
 
 pre {
-  font-size: 12px;
-  line-height: 1.2em;
+  background: #f8f8f8;
+  font: 13px/1.4em Menlo, monospace;
+  -webkit-font-smoothing: subpixel-antialiased;
+  overflow: auto;
+  margin-bottom: 15px;
+  padding: 15px;
 }
 pre code {
   white-space: pre;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 pre.highlight, .highlight > pre, td.code pre {
-  background: #FBFBFB;
-  /*background-image: linear-gradient(#F9F9F9 50%, #FDFDFD 50%);
+  /*background: #FBFBFB;
+  background-image: linear-gradient(#F9F9F9 50%, #FDFDFD 50%);
   background-repeat: repeat;
   background-size: 3em 3em;
   background-position: 0px 10px;
