@@ -137,7 +137,7 @@ Some variance groups may share properties. Suppose you're interested in wands si
     @NonVariant("material")
     abstract String wood();
     
-    @NonVariant({"material", "length_and_core" })
+    @NonVariant({"material", "length_and_core"})
     abstract String core();
     
     @NonVariant({"features", "length_and_core"})
