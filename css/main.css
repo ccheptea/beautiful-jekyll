@@ -649,6 +649,8 @@ pre {
   overflow: auto;
   margin-bottom: 15px;
   padding: 15px;
+  border:none;
+  border-radius:0px;
 }
 pre code {
   white-space: pre;
