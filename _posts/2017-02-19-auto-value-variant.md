@@ -4,7 +4,13 @@ published: true
 title: auto-value-variant
 ---
 
-I just started a new Android project and decided to get my hands dirty with some new technologies. While doing so, I came across a very common problem that simply pisses me off (no better way to put it): **comparing fields of two objects**. Now, because the project I work on is boring for the general public, I will use [**wands**](http://harrypotter.wikia.com/wiki/Wand) instead. So, here's a Wand model:
+I just started a new Android project and decided to get my hands dirty with some new technologies. While doing so, I came across a very common problem that simply pisses me off (no better way to put it): **comparing fields of two objects**. Now, because the project I work on is boring for the general public, I will use [**wands**](http://harrypotter.wikia.com/wiki/Wand) instead. 
+
+(TL;DR; [Show me the source code](https://github.com/ccheptea/auto-value-variant))
+
+## A problem
+
+Here's a Wand model:
 
 ```java
 @AutoValue abstract class Wand{
@@ -16,8 +22,6 @@ I just started a new Android project and decided to get my hands dirty with some
 }
 ```
 First thing to notice is that I use [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md). This means wand objects will be immutable and the methods ``equals``, ``toString`` and ``hashCode`` will be automatically implemented in a generated class ``AutoValue_Wand``. 
-
-## A problem
 
 Suppose you have Harry's wand and a list of other wands and you want to find all wands whose core and wood match Harry's. You could do this:
 
@@ -122,4 +126,23 @@ likeHarrysWandMaterial = wands.stream().filter(wand -> harrysWand.like(wand, "ma
 likeHarrysWandFeatures = wands.stream().filter(wand -> harrysWand.like(wand, "features"));
 ```
 
+Some variance groups may share properties. Suppose you're interested in wands similar to Harry's in terms of length and core. In this case, use a string array as the value for ``@NonVariant``.
+
+```java
+@AutoValue abstract class Wand implements Variant{
+    abstract String owner();
+    
+    @NonVariant("material")
+    abstract String wood();
+    
+    @NonVariant({"material", "length_and_core" })
+    abstract String core();
+    
+    @NonVariant({"features", "length_and_core"})
+    abstract float length();
+    
+    @NonVariant("features")
+    abstract String flexibility();
+}
+```
 
