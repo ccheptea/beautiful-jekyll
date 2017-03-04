@@ -56,7 +56,7 @@ This one fixed it, but, sadly, there are **too many paranthesis** and **null che
 
 ## A solution
 
-Thankfully, our model is taken care of by ``@AutoValue``. When you start using it you get to know the magic of ``AutoValueExtension``. There are many extensions. If you haven't seen any, check Ryan Harter's [article](http://ryanharter.com/blog/2016/05/16/autovalue-extensions/). Now as I said at the beginning, I wanted to get my hands dirty. So, I wrote yet another one called [auto-value-variant](https://github.com/ccheptea/auto-value-variant). I needed it to be easily integrated, make my code cleaner and easier to maintain. In short, I ended up this:
+Thankfully, our model is taken care of by ``@AutoValue``. When you start using it you get to know the magic of ``AutoValueExtension``. There are many extensions. If you haven't seen any, check Ryan Harter's [article](http://ryanharter.com/blog/2016/05/16/autovalue-extensions/). Now as I said at the beginning, I wanted to get my hands dirty. So, I wrote yet another extension called [auto-value-variant](https://github.com/ccheptea/auto-value-variant). I needed it to be easily integrated, make my code cleaner and easier to maintain. In short, I ended up this:
 
 ```java
 Wand harrysWand = new AutoValue_Wand("Harry Potter", "Holly", "Pheonix feather", 11, "Nice and Supple");
@@ -149,4 +149,4 @@ Some variance groups may share properties. Suppose you're interested in wands si
 ```
 ## A conclusion
 
-Code should be as clean and maintainable as possible. With ``AutoValue``, in most cases, those are guaranteed. Using its extensions makes it even better, boosting up development and eliminating the need for plenty of cumbersome tests. ``auto-value-variant`` is one of those extensions by helping you to easily and comprehensibly define static filters.
+Code should be as clean and maintainable as possible. With ``AutoValue``, in most cases, those are guaranteed. Using its extensions makes it even better, boosting up development and eliminating the need for plenty of cumbersome tests. [``auto-value-variant``](https://github.com/ccheptea/auto-value-variant) is one of those extensions by helping you to easily and comprehensibly define static filters.
