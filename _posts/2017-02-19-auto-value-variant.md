@@ -3,7 +3,6 @@ layout: post
 published: true
 title: auto-value-variant
 ---
-
 I just started a new Android project and decided to get my hands dirty with some new technologies. While doing so, I came across a very common problem that simply pisses me off (no better way to put it): **comparing fields of two objects** when filtering a list. Now, because the project I work on is boring for the general public, I will use [**wands**](http://harrypotter.wikia.com/wiki/Wand) instead. 
 
 (TL;DR; [Show me the source code](https://github.com/ccheptea/auto-value-variant))
@@ -28,7 +27,7 @@ Suppose you have Harry's wand and a list of other wands and you want to find all
 ```java
 List<Wand> likeHarrys = new ArrayList<>();
 for(Wand wand : wands){
-	if("Holly".equals(wand.wood()) && "Pheonix feather".equals(wand.core())){
+    if("Holly".equals(wand.wood()) && "Pheonix feather".equals(wand.core())){
     	likeHarrys.add(wand);
     }
 }
