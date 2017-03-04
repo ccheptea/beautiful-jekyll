@@ -138,7 +138,6 @@ exclude:
 
 # prose.io config
 prose:
-  rooturl: '.'
   media: 'img'
   ignore:
     - 404.html
