@@ -53,7 +53,7 @@ for(Wand wand : wands){
 }
 
 ```
-This one fixed it, but, sadly, there are **too many paranthesis** and **null checks**. In other words hard to read and hard to maintain. And maybe not so obviously, more null checks and paranthesis need to be added if we want to filter by other combinations of fields. For instance, for wood, core and length you will need another method ``sameWoodCoreAndLength`` with six null checks and about 36 paranthesis. Clearly, we need a better solution.
+This one fixed it, but, sadly, there are **too many paranthesis** and **null checks**. In other words hard to read and hard to maintain. And maybe not so obviously, more null checks and paranthesis need to be added if we want to filter by other combinations of fields. For instance, for wood, core and flexibility you will need another method ``sameWoodCoreAndFlexibility`` with six null checks and about 36 paranthesis. Clearly, we need a better solution.
 
 ## A solution
 
