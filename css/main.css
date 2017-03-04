@@ -694,3 +694,8 @@ td.gutter {
 #social-share-section {
   margin-bottom: 30px;
 }
+
+.btn-social-icon{
+  border:0px;
+  border-radius:0px;
+}
