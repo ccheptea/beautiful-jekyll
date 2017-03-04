@@ -5,7 +5,7 @@ title: auto-value-variant
 subtitle: Define static filters on AutoValue objects.
 date: '2017-03-04'
 ---
-I just started a new Android project and decided to get my hands dirty with some new technologies. While doing so, I came across a very common problem that simply pisses me off (no better way to put it): **comparing fields of two objects** when filtering a list. Now, because the project I work on is boring for the general public, I will use [**wands**](http://harrypotter.wikia.com/wiki/Wand) instead. 
+I just started a new Android project and decided to get my hands dirty with some new technologies. While doing so, I came across a very common problem that gives me headaches: **comparing fields of two objects** when filtering a list. Now, because the project I work on is boring for the general public, I will use [**wands**](http://harrypotter.wikia.com/wiki/Wand) instead in this article. 
 
 (TL;DR; [Show me the source code](https://github.com/ccheptea/auto-value-variant))
 
