@@ -79,5 +79,47 @@ To make this work the auto-value-variant dependency needs to be added to the pro
 }
 ```
 
-That is all. the interface 
+That is all. The interface [``Variant``](https://github.com/ccheptea/auto-value-variant/blob/master/src/main/java/com/ccheptea/auto/value/variant/Variant.java) defines the methods for comparing the objects, while the ``@NonVariant`` annotation is applied to properties we want to match when comparing them.
+
+There's also the case when you might want multiple filters with different field combinations. For that we can define variance or similarity groups using the ``@NonVariant`` annotation. Simpler put, suppose you want to have two filters. The first one filters by the wands material (wood and core). The second one filters by their features (length and flexibility). Lets modify the model.
+
+```java
+@AutoValue abstract class Wand implements Variant{
+    abstract String owner();
+    
+    @NonVariant("material")
+    abstract String wood();
+    
+    @NonVariant("material")
+    abstract String core();
+    
+    @NonVariant("features")
+    abstract float length();
+    
+    @NonVariant("features")
+    abstract String flexibility();
+}
+```
+
+Then filter.
+
+```java
+for(Wand wand : wands){
+	if(harrysWand.like(wand, "material")){
+    	likeHarrysWandMaterial.add(wand);
+    }
+    
+    if(harrysWand.like(wand, "features")){
+    	likeHarrysWandFeatures.add(wand);
+    }
+}
+```
+
+Using streams is even better.
+
+```java
+likeHarrysWandMaterial = wands.stream().filter(wand -> harrysWand.like(wand, "material"));
+likeHarrysWandFeatures = wands.stream().filter(wand -> harrysWand.like(wand, "features"));
+```
+
 
