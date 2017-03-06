@@ -37,7 +37,7 @@ for(Wand wand : wands){
 Does it do the job? Yes. Do you like it? Hopefully not. What if you want a list ``likeHermiones`` too. For that you can write a method like the one below.
 
 ```java
-public boolean sameWoodAndCore(String wand1, String wand2){
+public boolean sameWoodAndCore(Wand wand1, Wand wand2){
   return (wand1.wood() == null ? wand2.wood() == null : wand1.wood().equals(wand2.wood()))
         && (wand1.core() == null ? wand2.core() == null : wand1.core().equals(wand2.core()))
 }
