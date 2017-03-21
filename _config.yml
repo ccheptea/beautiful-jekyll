@@ -138,6 +138,7 @@ exclude:
 
 # prose.io config
 prose:
+  rooturl: '_posts'
   media: 'img'
   ignore:
     - 404.html
@@ -150,7 +151,6 @@ prose:
     - /img
     - /js
   metadata:
-    rooturl: '_posts'
     _posts:
       - name: "layout"
         field:
