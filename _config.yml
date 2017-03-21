@@ -150,6 +150,7 @@ prose:
     - /img
     - /js
   metadata:
+    rooturl: '_posts'
     _posts:
       - name: "layout"
         field:
