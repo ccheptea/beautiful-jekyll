@@ -10,7 +10,7 @@ At [Tango Targeting](http://tangotargeting.com/) we try to keep our code as simp
 ```java
 String email = car.driver().club().contact().email();
 if(email != null)
-	System.out.println(email);
+    System.out.println(email);
 ```
 Nothing fancy here: an email is printed and you may agree that everything is easy to read and understand. But did you spot any problems? If not, take another moment and try to identify the  devil hidden in the chain.
 
@@ -27,7 +27,7 @@ This can be easily remedied with some null checks.
 if(car.driver() != null && car.driver().club() != null && car.driver().club().contact() != null){
     String email = car.driver().club().contact().email();
     if(email != null)
-		System.out.println(email);
+	    System.out.println(email);
 }
 ```
 This is safe but not simple anymore. Reading becomes difficult and so is maintaining it. 
