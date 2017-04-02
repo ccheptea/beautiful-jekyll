@@ -25,7 +25,7 @@ This can be easily remedied with some null checks.
 
 ```java
 if(car.driver() != null && car.driver().club() != null && car.driver().club().contact() != null){
-	String email = car.driver().club().contact().email();
+    String email = car.driver().club().contact().email();
     if(email != null)
 		System.out.println(email);
 }
@@ -44,7 +44,7 @@ If Java 8 is not an option for you yet (us included), [this little project](http
 
 ```java
 Optional.of(car).map(Car::driver).map(Driver::club).map(Club::contact).map(Contact::email)
-	.ifPresent(System.out::println);
+    .ifPresent(System.out::println);
 ```
 
 This is a little better. However, we access our data a lot and having ``map`` and double colons (::) all over the place, makes me think of a quacking duck trying to survive John Conway's [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). So how can we make this code look more elegant and equally safe? We figured it should resemble its original form but magically avoid crashing and, to some extent, resemble Optionals. Hence we turned our heads toward [AutoValue](https://github.com/google/auto/tree/master/value) and more specifically its extensions.
@@ -56,19 +56,19 @@ We use [AutoValue](https://github.com/google/auto/tree/master/value) for maintai
 ```java
 String email = car.node().driver().club().contact().email().value();
 if(email != null)
-	System.out.println(email)
+    System.out.println(email)
 ```
 And it looks very similar to what we started with. But, actually, it can get even better.
 
 ```java
 car.node().driver().club().contact().email()
-	.ifPresent(System.out::println);
+    .ifPresent(System.out::println);
 ```
 Printing a message if the email is missing is just as simple.
 
 ```java
 car.node().driver().club().contact().email()
-	.ifPresent(System.out::println)
+    .ifPresent(System.out::println)
     .otherwise(() -> System.out.println("The email is missing"));
 ```
 
@@ -80,14 +80,14 @@ Many developers use a ``.map()`` method in various contexts(Observables, Streams
 
 ```java
 int charCount = car.node().driver().club().contact().email()
-	.map(String::length);
+    .map(String::length);
 ```
 
 Or, lets say instead of one email there is a list of several emails and we want to print them all:
 
 ```java
 car.node().driver().club().contact().email()
-	.map(Stream::of)
+    .map(Stream::of)
     .forEach(System.out::println);
 ```
 
@@ -97,9 +97,9 @@ Sometimes an email is not present but we still want to print a default value. To
 
 ```java
 car.node().driver().club().contact().email()
-	.orAlternative(alternativeEmail1)
+    .orAlternative(alternativeEmail1)
     .orAlternative(alternativeEmail2)
-	.withValue(System.out::println);
+    .withValue(System.out::println);
 ```
 
 #### Matching values
@@ -108,7 +108,7 @@ We can print only the gmail emails by using the ``.match()`` method to filter ou
 
 ```java
 car.node().driver().club().contact().email()
-	.match(value -> value.contains("@gmail.com"))
+    .match(value -> value.contains("@gmail.com"))
     .ifPresent(System.out::println)l
 ```
 
