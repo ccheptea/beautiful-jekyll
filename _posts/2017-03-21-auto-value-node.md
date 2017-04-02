@@ -90,6 +90,7 @@ car.node().driver().club().contact().email()
     .forEach(System.out::println);
 ```
 
+
 #### Alternative values
 Sometimes an email is not present but we still want to print a default value. To achieve this we can use ``otherwise()`` after ``ifPresent()``. This is not always the best solution as it breaks the chain (you can't use ``.map()`` after it). The better solution is to use ``orAlternative()``. It will return a new Node with the first not null value.
 
@@ -99,6 +100,7 @@ car.node().driver().club().contact().email()
     .orAlternative(alternativeEmail2)
     .withValue(System.out::println);
 ```
+
 
 #### Matching values
 We can print only the gmail emails by using the ``.match()`` method to filter out values.
