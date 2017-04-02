@@ -75,7 +75,6 @@ car.node().driver().club().contact().email()
 So, we've completely gotten rid of the if-else block by replacing it with a more elegant and expressive structure. And above all, it is safe - null checks are implicitly handled by the extension.
 
 #### Transforming (with .map())
-
 Many developers use a ``.map()`` method in various contexts(Observables, Streams, etc.). It is a handy method for transforming values and such a method is available in AutoValue Node as well. Suppose we wanted to map the email to the number of its characters:
 
 ```java
@@ -92,7 +91,6 @@ car.node().driver().club().contact().email()
 ```
 
 #### Alternative values
-
 Sometimes an email is not present but we still want to print a default value. To achieve this we can use ``otherwise()`` after ``ifPresent()``. This is not always the best solution as it breaks the chain (you can't use ``.map()`` after it). The better solution is to use ``orAlternative()``. It will return a new Node with the first not null value.
 
 ```java
@@ -103,7 +101,6 @@ car.node().driver().club().contact().email()
 ```
 
 #### Matching values
-
 We can print only the gmail emails by using the ``.match()`` method to filter out values.
 
 ```java
