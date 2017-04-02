@@ -1,10 +1,11 @@
 ---
 layout: post
-published: false
+published: true
 title: auto-value-node
-subtitle: Safely and gracefuly access optional fields
+subtitle: Safely and gracefuly access and process optional fields
+date: '2017-04-02'
 ---
-At [Tango Targeting](http://tangotargeting.com/) we try to keep our code as simple and comprehensible as possible. One of the challenges in doing so is having a complex and deep data structure. And by deep I mean something like in the following snippet:
+At [Tango Targeting](http://tangotargeting.com/) we try to keep our code as simple and comprehensible as possible. In a [previous article](http://www.ccheptea.com/2017-03-04-auto-value-variant/) I wrote about it from the perspective of comparing objects. But another challenge for sticking to this mission is having a complex and deep data structure. And by deep I mean something like in the following snippet:
 
 ```java
 String email = car.driver().club().contact().email();
@@ -29,7 +30,7 @@ if(car.driver() != null && car.driver().club() != null && car.driver().club().co
 		System.out.println(email);
 }
 ```
-This is safe but not simple anymore. Reading becomes difficult and so is maintaining. 
+This is safe but not simple anymore. Reading becomes difficult and so is maintaining it. 
 
 
 ## Using Optionals
@@ -71,7 +72,48 @@ car.node().driver().club().contact().email()
     .otherwise(() -> System.out.println("The email is missing"));
 ```
 
-So, we've completely gotten rid of an if-else block by replacing it with a more elegant and expressive structure. And above all, it is safe - null checks are implicitly handled by the extension.
+So, we've completely gotten rid of the if-else block by replacing it with a more elegant and expressive structure. And above all, it is safe - null checks are implicitly handled by the extension.
 
-#### 
+#### Transforming (with .map())
 
+Many developers use a ``.map()`` method in various contexts(Observables, Streams, etc.). It is a handy method for transforming values and such a method is available in AutoValue Node as well. Suppose we wanted to map the email to the number of its characters:
+
+```java
+int charCount = car.node().driver().club().contact().email()
+	.map(String::length);
+```
+
+Or, lets say instead of one email there is a list of several emails and we want to print them all:
+
+```java
+car.node().driver().club().contact().email()
+	.map(Stream::of)
+    .forEach(System.out::println);
+```
+
+#### Alternative values
+
+Sometimes an email is not present but we still want to print a default value. To achieve this we can use ``otherwise()`` after ``ifPresent()``. This is not always the best solution as it breaks the chain (you can't use ``.map()`` after it). The better solution is to use ``orAlternative()``. It will return a new Node with the first not null value.
+
+```java
+car.node().driver().club().contact().email()
+	.orAlternative(alternativeEmail1)
+    .orAlternative(alternativeEmail2)
+	.withValue(System.out::println);
+```
+
+#### Matching values
+
+We can print only the gmail emails by using the ``.match()`` method to filter out values.
+
+```java
+car.node().driver().club().contact().email()
+	.match(value -> value.contains("@gmail.com"))
+    .ifPresent(System.out::println)l
+```
+
+We use Node Extension in many places in our project and managed to reduced the code significantly while also increasing expressiveness and readability. Too see how else you can use it, check out the [github project]((https://github.com/ccheptea/auto-value-node)).
+
+## Conclusion
+
+A complex data structure may lead to a complicated journey toward delivering your product, because of time spent on maintaining models. Having AutoValue is definitely, at least for us, a good investment. Moreover, we have seen above that AutoValue can go beyond simply maintaning models. With Node Extension, it can also allow you to write more reliable, elegant and safe code.
