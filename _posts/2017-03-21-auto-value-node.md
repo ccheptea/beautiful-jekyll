@@ -47,7 +47,7 @@ Optional.of(car).map(Car::driver).map(Driver::club).map(Club::contact).map(Conta
     .ifPresent(System.out::println);
 ```
 
-This is a little better. However, we access our data a lot and having ``map`` and double colons (::) all over the place, makes me think of a quacking duck trying to survive John Conway's [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). So how can we make this code look more elegant and equally safe? We figured it should resemble its original form but magically avoid crashing and, to some extent, resemble Optionals. Hence we turned our heads toward [AutoValue](https://github.com/google/auto/tree/master/value) and more specifically its extensions.
+This is a little better. However, we access our data a lot and having ``map`` and double colons (::) all over the place, makes me think of a quacking duck trying to survive John Conway's [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). So how can we make this code look more elegant and equally safe? We figured it should resemble its original form but magically avoid crashing and, to some extent, resemble Optionals. Hence, we turned our heads toward [AutoValue](https://github.com/google/auto/tree/master/value) and more specifically its extensions.
 
 ## Using AutoValue Node Extension
 
@@ -92,7 +92,7 @@ car.node().driver().club().contact().email()
 
 
 #### Alternative values
-Sometimes an email is not present but we still want to print a default value. To achieve this we can use ``otherwise()`` after ``ifPresent()``. This is not always the best solution as it breaks the chain (you can't use ``.map()`` after it). The better solution is to use ``orAlternative()``. It will return a new Node with the first not null value.
+Sometimes an email is not present but we still want to print a default value. To achieve this we can use ``otherwise()`` after ``ifPresent()``. This is not always the best solution as it breaks the chain (you can't use ``.map()`` after it). The better solution is to use ``orAlternative()``. It will return a new Node with the first non null value.
 
 ```java
 car.node().driver().club().contact().email()
