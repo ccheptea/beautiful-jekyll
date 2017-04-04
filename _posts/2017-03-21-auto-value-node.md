@@ -5,7 +5,7 @@ title: auto-value-node
 subtitle: Safely and gracefuly access and process optional fields
 date: '2017-04-02'
 ---
-At [Tango Targeting](http://tangotargeting.com/) we try to keep our code as simple and comprehensible as possible. In a [previous article](http://www.ccheptea.com/2017-03-04-auto-value-variant/) I wrote about it from the perspective of comparing objects. But another challenge for sticking to this mission is having a complex and deep data structure. And by deep I mean something like in the following snippet:
+At [Tango Targeting](http://tangotargeting.com/) we try to keep our code as simple and comprehensible as possible. In a [previous article](http://www.ccheptea.com/2017-03-04-auto-value-variant/) I wrote about it from the perspective of comparing objects. Another challenge for sticking to this mission is having a complex and deep data structure, like the one highlighted in the snippet bellow.
 
 ```java
 String email = car.driver().club().contact().email();
@@ -111,7 +111,7 @@ car.node().driver().club().contact().email()
     .ifPresent(System.out::println)l
 ```
 
-We use Node Extension in many places in our project and managed to reduced the code significantly while also increasing expressiveness and readability. Too see how else you can use it, check out the [github project]((https://github.com/ccheptea/auto-value-node)).
+We use Node Extension in many places in our project and managed to reduced the code significantly while also increasing expressiveness and readability. Too see how else you can use it, check out the [github project](https://github.com/ccheptea/auto-value-node).
 
 ## Conclusion
 
