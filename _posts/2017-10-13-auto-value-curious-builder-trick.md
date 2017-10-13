@@ -78,4 +78,6 @@ abstract class SignInEvent implements Event{
 }
 ```
 
-This is much better. We still need to declare corresponding builder setter methods for each property present in the ```Event``` interface and AutoValue classes. Otherwise AutoValue will complaign (which is a positive thing). 
+This is much better. But, we still need to declare corresponding builder setter methods for each property present in the ```Event``` interface and AutoValue classes. Otherwise AutoValue will complain (which is a positive thing). This means we still have a lot of duplicate code in each builder. Let's see how we can solve that problem.
+
+## Curious reccurrent builder template
