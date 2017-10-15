@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: 'auto-value curious builder trick  '
 subtitle: Curiously recurring template for AutoValue builders
 date: '2017-10-15'
