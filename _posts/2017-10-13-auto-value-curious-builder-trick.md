@@ -85,7 +85,7 @@ This is much better. However, we must declare builder methods for all properties
 
 Let's analyze what we have and what we need. We have multple builders with a set common methods for which the only difference is the return type. ```SignInEvent.Builder.id()``` returns a ```SignInEvent.Builder``` instance, whereas ```OpenScreenEvent.Builder.id()``` returns a ```OpenScreenEvent.Builder``` instance, and so on. So, what we need is to somehow create an interface that will hold all the common methods, but will return the correct Builder class.
 
-There is an easy solution, for our problem, that goes by the name of CRTP ([Curriosly Recurrent Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
+There is an easy solution, for our problem, that goes by the name of CRTP ([Curiously Recurrent Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
 
 ```java
 interface BaseBuilder<T extends BaseBuilder<T>>{
