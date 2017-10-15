@@ -5,7 +5,7 @@ title: 'auto-value curious builder trick  '
 subtitle: Curiously recurring template for AutoValue builders
 ---
 
-As many people already know AutoValue is great. It is a helpful tool that takes care our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot\] of code that otherwise would be our job to do. 
+As many people already know AutoValue is great. It is a helpful tool that takes care our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot\] of code that otherwise would be our job to write. 
 
 ## Basic Builders 
 Another good think about AutoValue is that it allows us to easily implement the builder pattern -  reduced-to-an-interface easy.  Here's an example. Suppose we want to log an event every time a user signs in. Our event class will look like this:
@@ -116,7 +116,7 @@ abstract class OpenScreenEvent implements Event{
     abstract String screenName();
     
     @AutoValue.Builder
-	interface Builder{
+	interface Builder implements BaseBuilder<Builder>{
        Builder screenName(String screenName);
                      
        OpenScreenEvent build();
@@ -128,7 +128,7 @@ abstract class SignInEvent implements Event{
     abstract String username();
     
     @AutoValue.Builder
-	interface Builder{
+	interface Builder implements BaseBuilder<Builder>{
        Builder username(String screenName);
                       
        SignInEvent build();
@@ -136,4 +136,48 @@ abstract class SignInEvent implements Event{
 }
 ```
 
+That is it. A simple trick to avoid duplicate code and to easily add/remove common properties to our events.
+
+## Reduce even more code
+
+The code above is probably where you would stop. But, though it is a minor improvement, my personal preference is to get rid of the ```build()``` method as well. That is because, it is more or less, a method you would copy and paste from another event class. So, I would add an extra parameter to our ```BaseBuilder``` interface that will allow us to declare the ```build()``` method generically. Our final version of the above code looks like this:
+
+
+```java
+// Event interface that holds common properties
+interface Event {
+    String id();
+    String source();
+    String name();
+    Long timestamp();
+    
+    interface BaseBuilder<T extends BaseBuilder<T>, E extends Event>{
+       T id(String id);
+       T source(String source);
+       T name(String name);
+       T timestamp(Long timestamp);
+       E build();
+    }        
+}
+
+@AutoValue
+abstract class OpenScreenEvent implements Event{
+    abstract String screenName();
+    
+    @AutoValue.Builder
+	interface Builder implements BaseBuilder<Builder, OpenScreenEvent>{
+       Builder screenName(String screenName);
+    }
+}
+
+@AutoValue
+abstract class SignInEvent implements Event{
+    abstract String username();
+    
+    @AutoValue.Builder
+	interface Builder implements BaseBuilder<Builder, SignInEvent>{
+       Builder username(String screenName);
+    }
+}
+```
 
