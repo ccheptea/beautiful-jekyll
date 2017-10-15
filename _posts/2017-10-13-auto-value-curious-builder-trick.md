@@ -3,6 +3,7 @@ layout: post
 published: false
 title: 'auto-value curious builder trick  '
 subtitle: Curiously recurring template for AutoValue builders
+date: '2017-10-15'
 ---
 
 As many people already know AutoValue is great. It is a helpful tool that takes care our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot\] of code that otherwise would be our job to write. 
