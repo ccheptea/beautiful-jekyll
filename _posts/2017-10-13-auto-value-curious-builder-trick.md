@@ -9,7 +9,7 @@ date: '2017-10-15'
 As many people already know, [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md) is great. It is a helpful tool that takes care of our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot\] of code that otherwise would be our job to write. 
 
 ## Basic Builders 
-Another good think about [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md) is that it allows us to easily implement the builder pattern -  reduced-to-an-interface easy.  Let's see an example. Suppose we want to log an event every time a user signs in. Our event class will look like this:
+Another good thing about [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md) is that it allows us to easily implement the builder pattern -  reduced-to-an-interface easy.  Let's see an example. Suppose we want to log an event every time a user signs in. Our event class will look like this:
 
 ```java
 @AutoValue
@@ -83,9 +83,9 @@ This is much better. However, we must declare builder methods for all properties
 
 ## CRTP Builders
 
-Let's analyze what we have and what we need. We have multple builders with a set common methods for which the only difference is the return type. ```SignInEvent.Builder.id()``` returns a ```SignInEvent.Builder``` instance, whereas ```OpenScreenEvent.Builder.id()``` returns a ```OpenScreenEvent.Builder``` instance, and so on. So, what we need is to somehow create an interface that will hold all the common methods, but will return the correct Builder class.
+Let's analyze what we have and what we need. We have multple builders with a set of common methods for which the only difference is the return type. ```SignInEvent.Builder.id()``` returns a ```SignInEvent.Builder``` instance, whereas ```OpenScreenEvent.Builder.id()``` returns a ```OpenScreenEvent.Builder``` instance, and so on. So, what we need is to somehow create an interface that will hold all the common methods, but will return the correct Builder class.
 
-There is an easy solution, for our problem, that goes by the name of CRTP ([Curiously Recurrent Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
+There is an easy solution for our problem that goes by the name of CRTP ([Curiously Recurrent Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia, CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
 
 ```java
 interface BaseBuilder<T extends BaseBuilder<T>>{
@@ -93,7 +93,7 @@ interface BaseBuilder<T extends BaseBuilder<T>>{
 }
 ```
 
-Now we can apply this pattern to our builders. We will create a builder interface called ```BaseBuilder``` that will hold all common methods and place it in the ```Event``` interface to keep things together. Then each specific builder will extend ```BaseBuilder``` and set themselves as the interface parameter. Here's the code:
+Now we can apply this pattern to our builders. We will create a builder interface called ```BaseBuilder``` that will hold all common methods and place it in the ```Event``` interface to keep things together. Then, each specific builder will extend ```BaseBuilder``` and set itself as the interface parameter. Here's the code:
 
 ```java
 // Event interface that holds common properties
@@ -141,7 +141,7 @@ That is it. A simple trick to avoid duplicate code and to easily add/remove comm
 
 ## Reduce even more code
 
-The code above is probably where you would stop. But, though it is a minor improvement, my personal preference is to get rid of the ```build()``` method, as well. That is because it is, more or less, a method you would copy and paste from another event class. So, I would add an extra parameter to our ```BaseBuilder``` interface that will allow us to declare the ```build()``` method generically. Our final version of the above code looks like this:
+The code above is probably where you would stop. But, though it is a minor improvement, my personal preference is to get rid of the ```build()``` method as well. That is because it is, more or less, a method you would copy and paste from another event class. So, I would add an extra parameter to our ```BaseBuilder``` interface that will allow us to declare the ```build()``` method generically. Our final version of the above code looks like this:
 
 
 ```java
