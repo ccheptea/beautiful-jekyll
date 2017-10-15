@@ -7,8 +7,8 @@ subtitle: Curiously recurring template for AutoValue builders
 
 As many people already know AutoValue is great. It is a helpful tool that takes care our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot\] of code that otherwise would be our job to do. 
 
-## Easy builder setup
-Another good think about AutoValue is that it allows us to easily implement the builder pattern, reduced-to-an-interface easy.  Let's have a look at a real example. Suppose we want to log an event every time  a user a user signs in. Our event class will look like this:
+## Basic Builders 
+Another good think about AutoValue is that it allows us to easily implement the builder pattern -  reduced-to-an-interface easy.  Here's an example. Suppose we want to log an event every time a user signs in. Our event class will look like this:
 
 ```java
 @AutoValue
@@ -34,7 +34,7 @@ abstract class SignInEvent{
 
 ## Interface common properties
 
-The above class is ok, but it has a flaw. What if we want to report another event: ScreenOpenEvent? Obviously, you get the point, we need an interface that will hold the common properties like so:
+The above class is ok, but it has a flaw. What if we want to report another event: ScreenOpenEvent? Obviously, we need an interface that will hold the common properties.
 
 ```java
 // Event interface that holds common properties
@@ -46,7 +46,7 @@ interface Event {
 }
 
 @AutoValue
-abstract class ScreenOpenEvent implements Event{
+abstract class OpenScreenEvent implements Event{
     abstract String screenName();
     
     @AutoValue.Builder
@@ -57,7 +57,7 @@ abstract class ScreenOpenEvent implements Event{
        Builder source(String source);
        Builder name(String name);
        Builder timestamp(Long timestamp);
-       SignInEvent build();
+       OpenScreenEvent build();
     }
 }
 
@@ -78,6 +78,62 @@ abstract class SignInEvent implements Event{
 }
 ```
 
-This is much better. But, we still need to declare corresponding builder setter methods for each property present in the ```Event``` interface and AutoValue classes. Otherwise AutoValue will complain (which is a positive thing). This means we still have a lot of duplicate code in each builder. Let's see how we can solve that problem.
+This is much better. However, we must declare builder methods for all properties, including the ones declared in the ```Event``` interface. While this is a good thing, it also means we still have a lot of duplicate code in all builders.
 
-## Curious reccurrent builder template
+## CRTP Builders
+
+Let's analyze what we have and what we need. We have multple builders with a set common methods for which the only difference is the return type. ```SignInEvent.Builder.id()``` returns a ```SignInEvent.Builder``` instance, whereas ```OpenScreenEvent.Builder.id()``` returns a ```OpenScreenEvent.Builder``` instance, and so on. So, what we need is to somehow create an interface that will hold all the common methods, but will return the correct Builder class.
+
+There is an easy solution, for our problem, that goes by the name of CRTP ([Curriosly Recurrent Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
+
+```java
+interface BaseBuilder<T extends BaseBuilder<T>>{
+	T setterMethod(Object value);
+}
+```
+
+Now we can apply this pattern to our builders. We will create a builder interface called ```BaseBuilder``` that will hold all common methods and place it in the ```Event``` interface to keep things together. Then each specific builder will extend ```BaseBuilder``` and set themselves as the interface parameter. Here's the code:
+
+```java
+// Event interface that holds common properties
+interface Event {
+    String id();
+    String source();
+    String name();
+    Long timestamp();
+    
+    interface BaseBuilder<T extends BaseBuilder<T>>{
+       T id(String id);
+       T source(String source);
+       T name(String name);
+       T timestamp(Long timestamp);
+    }
+            
+}
+
+@AutoValue
+abstract class OpenScreenEvent implements Event{
+    abstract String screenName();
+    
+    @AutoValue.Builder
+	interface Builder{
+       Builder screenName(String screenName);
+                     
+       OpenScreenEvent build();
+    }
+}
+
+@AutoValue
+abstract class SignInEvent implements Event{
+    abstract String username();
+    
+    @AutoValue.Builder
+	interface Builder{
+       Builder username(String screenName);
+                      
+       SignInEvent build();
+    }
+}
+```
+
+
