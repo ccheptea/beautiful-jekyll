@@ -21,7 +21,7 @@ abstract class SignInEvent{
     abstract Long timestamp();
     
     @AutoValue.Builder
-	interface Builder{
+    interface Builder{
        Builder username(String screenName);
                       
        Builder id(String id);
@@ -51,7 +51,7 @@ abstract class OpenScreenEvent implements Event{
     abstract String screenName();
     
     @AutoValue.Builder
-	interface Builder{
+    interface Builder{
        Builder screenName(String screenName);
                       
        Builder id(String id);
@@ -67,7 +67,7 @@ abstract class SignInEvent implements Event{
     abstract String username();
     
     @AutoValue.Builder
-	interface Builder{
+    interface Builder{
        Builder username(String screenName);
                       
        Builder id(String id);
@@ -117,7 +117,7 @@ abstract class OpenScreenEvent implements Event{
     abstract String screenName();
     
     @AutoValue.Builder
-	interface Builder implements BaseBuilder<Builder>{
+    interface Builder implements BaseBuilder<Builder>{
        Builder screenName(String screenName);
                      
        OpenScreenEvent build();
@@ -129,7 +129,7 @@ abstract class SignInEvent implements Event{
     abstract String username();
     
     @AutoValue.Builder
-	interface Builder implements BaseBuilder<Builder>{
+    interface Builder implements BaseBuilder<Builder>{
        Builder username(String screenName);
                       
        SignInEvent build();
@@ -166,7 +166,7 @@ abstract class OpenScreenEvent implements Event{
     abstract String screenName();
     
     @AutoValue.Builder
-	interface Builder implements BaseBuilder<Builder, OpenScreenEvent>{
+    interface Builder implements BaseBuilder<Builder, OpenScreenEvent>{
        Builder screenName(String screenName);
     }
 }
@@ -176,7 +176,7 @@ abstract class SignInEvent implements Event{
     abstract String username();
     
     @AutoValue.Builder
-	interface Builder implements BaseBuilder<Builder, SignInEvent>{
+    interface Builder implements BaseBuilder<Builder, SignInEvent>{
        Builder username(String screenName);
     }
 }
