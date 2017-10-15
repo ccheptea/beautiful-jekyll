@@ -181,3 +181,5 @@ abstract class SignInEvent implements Event{
     }
 }
 ```
+
+In conclusion, we can apply interfaces and the CRTP trick to write shorter and better organized AutoValue models.
