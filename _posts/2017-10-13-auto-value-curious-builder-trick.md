@@ -22,7 +22,7 @@ abstract class SignInEvent{
     
     @AutoValue.Builder
     interface Builder{
-       Builder username(String screenName);
+       Builder username(String username);
                       
        Builder id(String id);
        Builder source(String source);
@@ -68,7 +68,7 @@ abstract class SignInEvent implements Event{
     
     @AutoValue.Builder
     interface Builder{
-       Builder username(String screenName);
+       Builder username(String username);
                       
        Builder id(String id);
        Builder source(String source);
@@ -130,7 +130,7 @@ abstract class SignInEvent implements Event{
     
     @AutoValue.Builder
     interface Builder implements BaseBuilder<Builder>{
-       Builder username(String screenName);
+       Builder username(String username);
                       
        SignInEvent build();
     }
@@ -177,7 +177,7 @@ abstract class SignInEvent implements Event{
     
     @AutoValue.Builder
     interface Builder implements BaseBuilder<Builder, SignInEvent>{
-       Builder username(String screenName);
+       Builder username(String username);
     }
 }
 ```
