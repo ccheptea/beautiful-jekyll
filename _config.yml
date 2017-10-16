@@ -17,7 +17,7 @@ baseurl: ""
 title: Constantin Cheptea
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: Little code for big adventures.
 
 # --- Navigation bar options --- #
 
@@ -43,7 +43,7 @@ author:
   email: "cheptea.constantin@gmail.com"
   github: ccheptea
   google-plus: +yourname   # eg. +DeanAttali or 109424658772469020925
-  linkedin: yourname
+  linkedin: constantin-cheptea-87a82a71
 
 # Select which links to show in the footer
 footer-links-active:
