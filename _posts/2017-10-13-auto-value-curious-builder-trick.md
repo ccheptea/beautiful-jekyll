@@ -89,7 +89,7 @@ There is an easy solution for our problem that goes by the name of CRTP ([Curiou
 
 ```java
 interface BaseBuilder<T extends BaseBuilder<T>>{
-	T setterMethod(Object value);
+    T setterMethod(Object value);
 }
 ```
 
