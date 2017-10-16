@@ -2,7 +2,7 @@
 layout: post
 published: true
 title: auto-value-node
-subtitle: Safely and gracefuly access and process optional fields
+subtitle: Safely and gracefuly access and process AutoValue optional fields
 date: '2017-04-02'
 ---
 At [Tango Targeting](http://tangotargeting.com/) we try to keep our code as simple and comprehensible as possible. In a [previous article](http://www.ccheptea.com/2017-03-04-auto-value-variant/) I wrote about it from the perspective of comparing objects. Another challenge for sticking to this mission is having a complex and deep data structure, like the one highlighted in the snippet bellow.
