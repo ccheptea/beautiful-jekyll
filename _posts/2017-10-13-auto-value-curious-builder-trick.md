@@ -6,7 +6,7 @@ subtitle: Curiously recurring template for AutoValue builders
 date: '2017-10-15'
 ---
 
-As many people already know, [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md) is great. It is a helpful tool that takes care of our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot\] of code that otherwise would be our job to write. 
+As many people already know, [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md) is great. It is a helpful tool that takes care of our model objects, makes them solid and immutable, has lots of extensions and generates \[a lot of\] code that otherwise would be our job to write. 
 
 ## Basic Builders 
 Another good thing about [AutoValue](https://github.com/google/auto/blob/master/value/userguide/index.md) is that it allows us to easily implement the builder pattern -  reduced-to-an-interface easy.  Let's see an example. Suppose we want to log an event every time a user signs in. Our event class will look like this:
@@ -83,9 +83,9 @@ This is much better. However, we must declare builder methods for all properties
 
 ## CRTP Builders
 
-Let's analyze what we have and what we need. We have multple builders with a set of common methods for which the only difference is the return type. ```SignInEvent.Builder.id()``` returns a ```SignInEvent.Builder``` instance, whereas ```OpenScreenEvent.Builder.id()``` returns a ```OpenScreenEvent.Builder``` instance, and so on. So, what we need is to somehow create an interface that will hold all the common methods, but will return the correct Builder class.
+Let's analyze what we have and what we need. We have multiple builders with a set of common methods for which the only difference is the return type. ```SignInEvent.Builder.id()``` returns a ```SignInEvent.Builder``` instance, whereas ```OpenScreenEvent.Builder.id()``` returns a ```OpenScreenEvent.Builder``` instance, and so on. So, what we need is to somehow create an interface that will hold all the common methods, but will return the correct Builder class.
 
-There is an easy solution for our problem that goes by the name of CRTP ([Curiously Recurrent Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia, CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
+There is an easy solution for our problem that goes by the name of CRTP ([Curiously Recurring Template Pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)). According to Wikipedia, CRTP ***is an idiom \[...\] in which a class X derives from a class template instantiation using X itself as template argument***. Simply put, it says that we can have an interface like this:
 
 ```java
 interface BaseBuilder<T extends BaseBuilder<T>>{
