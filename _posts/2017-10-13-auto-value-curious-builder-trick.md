@@ -141,7 +141,7 @@ That is it. A simple trick to avoid duplicate code and to easily add/remove comm
 
 ## Reduce even more code
 
-The code above is probably where you would stop. But, though it is a minor improvement, my personal preference is to get rid of the ```build()``` method as well. That is because it is, more or less, a method you would copy and paste from another event class. So, I would add an extra parameter to our ```BaseBuilder``` interface that will allow us to declare the ```build()``` method generically. Our final version of the above code looks like this:
+The code above is probably where you would stop. But, though it is a minor improvement, my personal preference is to get rid of the ```build()``` method as well. That's because it is, more or less, a method you would copy and paste from another event class. So, I would add an extra parameter to our ```BaseBuilder``` interface that will allow us to declare the ```build()``` method generically. Our final version of the above code looks like this:
 
 
 ```java
