@@ -27,9 +27,22 @@ _ = manager.rx
 
 ## Mistakes
 
-A common mistake people usually make when consuming a REST API is relying solely on the happy flows. After all, it is easier to consider the API infallible and blame the backend guys if anything goes wrong. That is something to expect as usually one wants to see quick results and get a dosage of serotonin. Everyone loves rewards and dreads failures. I'm no exception to that rule. Hence, sometimes errors are ignored. 
-Another mistake is treating all errors the same way. With Rx it is quite easy to add a handler for errors, but even then it is tempting to tell the user "Something went wrong. Please try again later. Thanks!". 
+A common mistake people usually make when consuming a REST API is relying solely on the happy flows. After all, it is easier to consider the API infallible and blame the backend guys if anything goes wrong. That is something to expect as usually one wants to see quick results and get a dosage of serotonin. Everyone loves rewards and dreads failures. I'm no exception to that rule. Hence, sometimes errors are ignored.
 
+Another mistake is treating all errors the same way. With Rx it is quite easy to add a handler for errors, but even then it is tempting to tell the user "Something went wrong. Please try again later. Thanks!". But errors are not the same and in order to avoid confusing users we need to provide appropriate feedback.
+
+
+## Types of Errors
+
+Generally, when making an http call with RxAlamofire there are three categories of errors:
+
+1. Errors raised on the client (e.g.: no connectivity, errors while processing the response etc.)
+2. Expected errors originating on the API (e.g.: unauthorized user, invalid credentials, resources not found etc.)
+3. Unexpected errors originating on the API (e.g.: internal server error)
+
+Errors in the first category usually come with an explicit message that we can present to the user. For instance, if there is no internet connection we can display the error message in the `onError` callback from the above snippet.
+
+The second and third categories are a bit trickier. That is because when making a call to the endpoind and we do get a response, RxAlamofire considers it successful, regardless of its status code. 
 
 ```swift
 
