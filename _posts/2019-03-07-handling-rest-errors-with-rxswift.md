@@ -42,7 +42,9 @@ Generally, when making an http call with RxAlamofire there are three categories 
 
 Errors in the first category usually come with an explicit message that we can present to the user. For instance, if there is no internet connection we can display the error message in the `onError` callback from the above snippet.
 
-The second and third categories are a bit trickier. That is because when making a call to the endpoind and we do get a response, RxAlamofire (and probably all HTTP clients) considers it successful, regardless of its status code. 
+The second and third categories are a bit trickier. That is because when making a call to the endpoint and we do get a response, Alamofire (and probably all HTTP clients) considers it successful, regardless of its status code. 
+
+So how do we 
 
 ```swift
 
