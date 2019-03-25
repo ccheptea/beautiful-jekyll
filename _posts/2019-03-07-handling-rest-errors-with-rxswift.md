@@ -1,7 +1,9 @@
 ---
 layout: post
 published: false
-title: Handling REST errors with RxSwift
+title: Handling REST errors with RxSwift and RxAlamofire
+date: '2019-03-25'
+subtitle: Use enums and extension functions to simplify consuming REST APIs.
 ---
 
 ## Consuming a REST API 
