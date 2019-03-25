@@ -14,7 +14,7 @@ Making a network call with RxAlamofire is as simple as:
 
 ```swift
 _ = session.rx
-	.request(.get, url)
+    .request(.get, url)
     .responseData()
     .subscribe(onNext: { response in
     	// handle response
@@ -72,15 +72,15 @@ Now let's write some models. Consider an authentication endpoint that expects an
 Successful response JSON example:
 ```json
 {
-	"user_id": "123",
-	"token": "c7d83mdla_3ms"
+    "user_id": "123",
+    "token": "c7d83mdla_3ms"
 }
 ```
 
 Failure response JSON example:
 ```json
 {
-	"error_message": "User doesn't exist."
+    "error_message": "User doesn't exist."
 }
 ```
 
@@ -88,12 +88,12 @@ In Swift this can be translated to the following:
 
 ```swift
 struct LoginResponse: Codable{
-	let user_id: String,
+    let user_id: String,
     let token: String
 }
 
 struct ApiErrorMessage: Codable{
-	error_message: String
+    error_message: String
 }
 ```
 
@@ -105,7 +105,7 @@ In order to make things work, we have to teach RxAlamofire to map the actual res
 
 ```swift
 extension Observable where Element == (HTTPURLResponse, Data){
-	fileprivate func expectingObject<T : Codable>(ofType type: T.Type) -> Observable<ApiResult<T, ApiErrorMessage>>{
+    fileprivate func expectingObject<T : Codable>(ofType type: T.Type) -> Observable<ApiResult<T, ApiErrorMessage>>{
         return self.map{ (httpURLResponse, data) -> ApiResult<T, ApiErrorMessage> in
             switch httpURLResponse.statusCode{
             case 200 ... 299:
@@ -135,22 +135,22 @@ Now let's see how our login call will look like.
 
 ```swift
 _ = manager.rx
-	.request(.post, "https://my-api.com/login",
-		parameters: ["email": john@doe.com, "password": "onlyjohnknowme"])
-	.responseData()
-	.expectingObject(ofType: LoginResponse.self)
+    .request(.post, "https://my-api.com/login",
+        parameters: ["email": john@doe.com, "password": "onlyjohnknowme"])
+    .responseData()
+    .expectingObject(ofType: LoginResponse.self)
     .subscribe(onNext: { apiResult in
-    	switch apiResult{
-		case let .success(loginResponse):
-        	// handling the successful response
-        	saveUserId(loginResponse.user_id)
-			saveToken(loginResponse.token)
-		case let .failure(apiErrorMessage):
-        	// handling the erroneous response
-			showError(apiErrorMessage.error_msg)
-		}
+        switch apiResult{
+        case let .success(loginResponse):
+            // handling the successful response
+            saveUserId(loginResponse.user_id)
+            saveToken(loginResponse.token)
+        case let .failure(apiErrorMessage):
+            // handling the erroneous response
+            showError(apiErrorMessage.error_msg)
+        }
     },onError:{ err in
-    	// handle client originating error
+        // handle client originating error
     })
 ```
 
