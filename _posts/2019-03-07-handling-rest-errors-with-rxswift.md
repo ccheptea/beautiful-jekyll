@@ -138,8 +138,8 @@ _ = manager.rx
 	.observeOn(MainScheduler.instance)
 	.responseData()
 	.expectingObject(ofType: LoginResponse.self)
-    .subscribe(onNext: {
-    	switch result{
+    .subscribe(onNext: { apiResult in
+    	switch apiResult{
 		case let .success(loginResponse):
         	saveUserId(loginResponse.user_id)
 			saveToken(loginResponse.token)
