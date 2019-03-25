@@ -68,6 +68,35 @@ enum ApiResult<Value, Error>{
 
 The above code can be read as: __An API result can succeed with a Value object or fail with an Error object__. 
 
+Now let's write some models. Consider an authentication endpoint that takes an email and a password, and responds with a JSON containing a user id and a token if the request is successful or a JSON containing an error if it is not successful.
+
+Successful response JSON example:
+```json
+{
+	"user_id": "123",
+	"token": "c7d83mdla_3ms"
+}
+```
+
+Failure response JSON example:
+```json
+{
+	"error_msg": "User doesn't exist."
+}
+```
+
+In Swift this can be translated to the following:
+
+```swift
+struct LoginResponse: Codable{
+	let user_id: String,
+    let token: String
+}
+
+struct ApiErrorMessage: Codable{
+	error_msg: String
+}
+```
 
 
 
