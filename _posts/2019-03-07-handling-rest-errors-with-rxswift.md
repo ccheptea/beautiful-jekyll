@@ -136,9 +136,9 @@ Now let's see how our login call will look like.
 ```swift
 _ = manager.rx
     .request(.post, "https://my-api.com/login",
-        parameters: ["email": john@doe.com, "password": "onlyjohnknowme"])
+        parameters: ["email": john@doe.com, "password": "onlyjohnknowsme"])
     .responseData()
-    .expectingObject(ofType: LoginResponse.self)
+    .expectingObject(ofType: LoginResponse.self) // <-- specify what object is expected
     .subscribe(onNext: { apiResult in
         switch apiResult{
         case let .success(loginResponse):
