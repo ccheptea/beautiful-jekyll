@@ -98,5 +98,55 @@ struct ApiErrorMessage: Codable{
 }
 ```
 
+For the sake of simplicity, in this example we will consider that the scheme of the error message response is always the same. 
 
+Now in order to make things work, we will have to teach RxAlamofire to map the actual response to the correct type: `LoginResponse` or `ApiErrorMessage`. To do that we can write an extension function for the `Observable`.
 
+```swift
+extension Observable where Element == (HTTPURLResponse, Data){
+	fileprivate func expectingObject<T : Codable>(ofType type: T.Type) -> Observable<ApiResult<T, ApiErrorMessage>>{
+        return self.map{ (httpURLResponse, data) -> ApiResult<T, ApiErrorMessage> in
+            switch httpURLResponse.statusCode{
+            case 200 ... 299:
+                // is status code is successful we can safely decode to our expected type T
+                let object = try JSONDecoder().decode(type, from: data)
+                return .success(object)
+            default:
+                // otherwise try
+                let apiErrorMessage: ApiErrorMessage
+                do{
+                    // to decode an expected error
+                    apiErrorMessage = try JSONDecoder().decode(ApiErrorMessage.self, from: data)
+                } catch _ {
+                    // or not. (this occurs if the API failed or doesn't return a handled exception)
+                    apiErrorMessage = ApiErrorMessage(errorMsg: "Server Error.")
+                }
+                return .failure(apiErrorMessage)
+            }
+        }
+    }
+}
+```
+
+Phew! That is quite some information to grasp. But if you look closer it is not that complicated. What the function does is to tell the observable object how to convert the data based on the response's status code and what to send further down the pipe. Now let's see how this looks in our code and how it helps us. The login request will look like this:
+
+```swift
+_ = manager.rx
+	.request(.post, "https://my-api.com/login",
+		parameters: ["email": john@doe.com, "password": "onlyjohnknowme"],
+		encoding: URLEncoding.default)
+	.observeOn(MainScheduler.instance)
+	.responseData()
+	.expectingObject(ofType: LoginResponse.self)
+    .subscribe(onNext: {
+    	switch result{
+		case let .success(loginResponse):
+        	saveUserId(loginResponse.user_id)
+			saveToken(loginResponse.token)
+		case let .failure(apiErrorMessage):
+			showError(apiErrorMessage.error_msg)
+		}
+    },onError:{ err in
+    	// handle client originating error
+    })
+```
