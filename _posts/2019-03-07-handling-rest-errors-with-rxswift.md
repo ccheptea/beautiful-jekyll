@@ -6,8 +6,6 @@ date: '2019-03-25'
 subtitle: Use enums and extension functions to simplify consuming REST APIs.
 ---
 
-## Consuming a REST API 
-
 If you're developing an iOS app that consumes a REST API, chances are you're using RxAlamofire. If you don't, then it is worth exploring what it has to offer. For me personally, transitioning to iOS/Swift from an Android/Kotlin world was fairly smooth. The two languages share a lot of similarities. And if you're willing to look, there are plenty of (almost) equivalent libraries for both platforms. 
 
 The first thing I integrated into my iOS app was RxSwift, followed by Alamofire (a twin for Retrofit) and RxAlamofire. RxAlamofire is a wrapper on top of Alamofire that offers all the good stuff Rx has in its trunk.
