@@ -13,11 +13,10 @@ The first thing I integrated in my iOS app was RxSwift, followed by Alamofire (a
 Making a network call with RxAlamofire is as simple as:
 
 ```swift
-_ = manager.rx
+_ = session.rx
 	.request(.get, url)
     .responseData()
-    .asSingle()
-    .subscribe(onSuccess: { response in
+    .subscribe(onNext: { response in
     	// handle response
     }, onError: { error in
     	// handle error
@@ -100,7 +99,9 @@ struct ApiErrorMessage: Codable{
 
 For the sake of simplicity, in this example we will consider that the scheme of the error message response is always the same. 
 
-Now in order to make things work, we will have to teach RxAlamofire to map the actual response to the correct type: `LoginResponse` or `ApiErrorMessage`. To do that we can write an extension function for the `Observable`.
+## Handling Responses
+
+In order to make things work, we will have to teach RxAlamofire to map the actual response to the correct type: `LoginResponse` or `ApiErrorMessage`. To do that we can write an extension function for the `Observable` which we will use to instruct RxAlamofire about our expected response.
 
 ```swift
 extension Observable where Element == (HTTPURLResponse, Data){
@@ -128,7 +129,7 @@ extension Observable where Element == (HTTPURLResponse, Data){
 }
 ```
 
-Phew! That is quite some information to grasp. But if you look closer it is not that complicated. What the function does is to tell the observable object how to convert the data based on the response's status code and what to send further down the pipe. Now let's see how this looks in our code and how it helps us. The login request will look like this:
+Phew! That is quite some information to grasp. But if you look closer it is not that complicated. What the function does is to tell the observable how to convert the data based on the response's status code and what to send further down the pipe. Now let's see how this looks in our code and how it helps us. The login request will look like this:
 
 ```swift
 _ = manager.rx
@@ -150,3 +151,5 @@ _ = manager.rx
     	// handle client originating error
     })
 ```
+
+Finally, we can that the response type ambiguity was eliminated and with a few extra lines of code we can safely and correctly handle all of our responses.
