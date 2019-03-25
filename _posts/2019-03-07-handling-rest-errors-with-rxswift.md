@@ -27,7 +27,7 @@ _ = manager.rx
 
 ## Mistakes
 
-A common mistake people usually make when consuming a REST API is relying solely on the happy flows. After all, it is easier to consider the API infallible and blame the backend guys if anything goes wrong. That is something to expect as usually one wants to see quick results and get a dosage of serotonin. Everyone loves rewards and dreads failures. I'm no exception to that rule. Hence, sometimes errors are ignored.
+A common mistake people usually make when consuming a REST API is relying solely on the happy flows. After all, it is easier to consider the API infallible and blame the backend guys if anything goes wrong. That is something to expect as everyone loves rewards and dreads failures. I'm no exception to that rule. Hence, sometimes errors are ignored.
 
 Another mistake is treating all errors the same way. With Rx it is quite easy to add a handler for errors, but even then it is tempting to tell the user "Something went wrong. Please try again later. Thanks!". But errors are not the same and in order to avoid confusing users we need to provide appropriate feedback.
 
@@ -44,7 +44,11 @@ Errors in the first category usually come with an explicit message that we can p
 
 The second and third categories are a bit trickier. That is because when making a call to the endpoint and we do get a response, Alamofire (and probably all HTTP clients) considers it successful, regardless of its status code. 
 
-So how do we 
+So how do we model our data in order to easily handle responses that could represent either a success or an error?
+
+## Modeling Responses
+
+One thing I like about Swift is that enums can be instantiated with an associated value. This increases type-safety and allows us to better model our business logic. To make things simpler, here is how we can define our response:
 
 ```swift
 
@@ -61,3 +65,9 @@ enum ApiResult<Value, Error>{
     }
 }
 ```
+
+The above code can be read as: __An API result can succeed with a Value object or fail with an Error object__. 
+
+
+
+
