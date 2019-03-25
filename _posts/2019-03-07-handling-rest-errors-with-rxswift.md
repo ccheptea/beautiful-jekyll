@@ -26,7 +26,7 @@ _ = session.rx
 
 ## Mistakes
 
-A common mistake people usually make when consuming a REST API is relying solely on the happy flows. After all, it is easier to consider the API infallible and blame the backend guys if anything goes wrong. That is something to expect as everyone loves rewards and dreads failures. I'm no exception to that rule. Hence, sometimes errors are ignored.
+A common mistake people usually make when consuming a REST API is relying solely on the happy flows. After all, it is easier to consider the API infallible and blame the backend if anything goes wrong. That is something to expect as everyone loves rewards and dreads failures.Hence, sometimes errors are ignored.
 
 Another mistake is treating all errors the same way. With Rx it is quite easy to add a handler for errors, but even then it is tempting to tell the user "Something went wrong. Please try again later. Thanks!". But errors are not the same and in order to avoid confusing users we need to provide appropriate feedback.
 
@@ -65,9 +65,9 @@ enum ApiResult<Value, Error>{
 }
 ```
 
-The above code can be read as: __An API result can succeed with a Value object or fail with an Error object__. 
+The above code can be read as: __An API call result can succeed with a Value object or fail with an Error object__. 
 
-Now let's write some models. Consider an authentication endpoint that takes an email and a password, and responds with a JSON containing a user id and a token if the request is successful or a JSON containing an error if it is not successful.
+Now let's write some models. Consider an authentication endpoint that takes an email and a password, and responds with a JSON containing a user id and a token if the request is successful or a JSON containing an error message if it is not successful.
 
 Successful response JSON example:
 ```json
@@ -80,7 +80,7 @@ Successful response JSON example:
 Failure response JSON example:
 ```json
 {
-	"error_msg": "User doesn't exist."
+	"error_message": "User doesn't exist."
 }
 ```
 
@@ -93,15 +93,15 @@ struct LoginResponse: Codable{
 }
 
 struct ApiErrorMessage: Codable{
-	error_msg: String
+	error_message: String
 }
 ```
 
-For the sake of simplicity, in this example we will consider that the scheme of the error message response is always the same. 
+For the sake of simplicity, let's consider that the scheme of the error message is always the same. 
 
 ## Handling Responses
 
-In order to make things work, we will have to teach RxAlamofire to map the actual response to the correct type: `LoginResponse` or `ApiErrorMessage`. To do that we can write an extension function for the `Observable` which we will use to instruct RxAlamofire about our expected response.
+In order to make things work, we will have to teach RxAlamofire to map the actual response to the correct type: `LoginResponse` or `ApiErrorMessage`. To do that we will write an extension function for the `Observable` which we will use to instruct RxAlamofire about our expected response.
 
 ```swift
 extension Observable where Element == (HTTPURLResponse, Data){
@@ -129,22 +129,24 @@ extension Observable where Element == (HTTPURLResponse, Data){
 }
 ```
 
-Phew! That is quite some information to grasp. But if you look closer it is not that complicated. What the function does is to tell the observable how to convert the data based on the response's status code and what to send further down the pipe. Now let's see how this looks in our code and how it helps us. The login request will look like this:
+Phew! That is quite some information to grasp. But if you look closer it is not that complicated. What the function does is to tell the observable how to convert the data based on the response's status code and what to send further down the pipe. Here you can easily add more cases for other status codes, depending on your needs.
+
+Now let's see how our login call will look like.
 
 ```swift
 _ = manager.rx
 	.request(.post, "https://my-api.com/login",
-		parameters: ["email": john@doe.com, "password": "onlyjohnknowme"],
-		encoding: URLEncoding.default)
-	.observeOn(MainScheduler.instance)
+		parameters: ["email": john@doe.com, "password": "onlyjohnknowme"])
 	.responseData()
 	.expectingObject(ofType: LoginResponse.self)
     .subscribe(onNext: { apiResult in
     	switch apiResult{
 		case let .success(loginResponse):
+        	// handling the successful response
         	saveUserId(loginResponse.user_id)
 			saveToken(loginResponse.token)
 		case let .failure(apiErrorMessage):
+        	// handling the erroneous response
 			showError(apiErrorMessage.error_msg)
 		}
     },onError:{ err in
@@ -152,4 +154,6 @@ _ = manager.rx
     })
 ```
 
-Finally, we can that the response type ambiguity was eliminated and with a few extra lines of code we can safely and correctly handle all of our responses.
+## Conclusion
+
+Although being new to iOS development, Swift offers handy tools to help you write good code. In this particular case, we eliminated the response type ambiguity when consuming a REST API which implicitly helps us improve the end user experience. We modelled our responses using `enums` and added a superpower to the Observable type by writing an extenstion function.
