@@ -1,9 +1,11 @@
 ---
 layout: post
-published: false
+published: true
 title: Molen De Ster
 subtitle: 'Morile de vânt Olandeze: de la motoare la mass messaging'
 date: '2019-09-01'
+image: >-
+  https://github.com/ccheptea/ccheptea.github.io/blob/master/img/IMG_20180919_183601.jpg
 ---
 
 
