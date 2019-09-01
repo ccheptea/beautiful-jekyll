@@ -2,6 +2,8 @@
 layout: post
 published: false
 title: Molen De Ster
+subtitle: 'Morile de vânt Olandeze: de la motoare la mass messaging'
+date: '2019-09-01'
 ---
 
 
