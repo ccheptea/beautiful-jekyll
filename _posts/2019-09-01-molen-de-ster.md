@@ -95,6 +95,6 @@ Gaspar se uită la ceas și ne spune că are un alt grup în așteptare, dar mai
 
 Ne grăbim pe scări unde următorul grup îl așteaptă de ceva vreme pe Gaspar, dar nu fară a-i mulțumi și a lăuda munca de morar care presupune atât de multe abilități, și pricepere inginerească, și bună comunicare, și acuitate meteorologică. Gaspar ne mulțumește și el pentru laude, ca și cum ar fi unul dintre morarii orașului dar își arată fața de olandez modest și schimbă repede subiectul către altceva.
 
-Afară ne așteapă motanul nostru roșcat-portocaliu cu coada dreaptă în cel mai înalt punct vertical în sus de parcă vrea să ne spună că e timp de o mică pauză. Iar noi ne comandăm o cafea și ne alăturăm concertului din curte.
+Afară ne așteapă motanul nostru roșcat-portocaliu cu coada ridicată în cel mai înalt punct de parcă vrea să ne spună că e timp de o mică pauză. Iar noi ne comandăm o cafea și ne alăturăm concertului din curte.
 
 ![](https://github.com/ccheptea/ccheptea.github.io/raw/master/img/IMG_20181103_130459.jpg)
