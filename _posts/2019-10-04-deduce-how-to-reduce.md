@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: Deduce how to Reduce
 ---
 ## A New Post
