@@ -11,19 +11,19 @@ JavaScript is a mess. There are countless articles on the web about how peculiar
 
 But even if JavaScript is so widely and wildly used, sometimes it feels incomplete and forces you to break a function chain or implement a basic functionality from the ground up. Here are four functions that I wish were readily available in JavaScript.
 
-## Array.distinct(selector)
+## Array.distinct()
 
 
 
-## Array.indicesOf(test)
+## Array.indicesOf()
 
 
 
-## Array.binarySearch(comparator)
+## Array.binarySearch()
 
 
 
-## Number.rangeTo(toValue)
+## Number.rangeTo()
 
 
 
