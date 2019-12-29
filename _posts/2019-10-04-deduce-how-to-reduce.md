@@ -2,9 +2,7 @@
 layout: post
 published: false
 title: 4 useless functions I wish JavaScript offered out of the box
-subtitle: >-
-  Map starting with the second element. Reduce a specific array interval. Get
-  all indices of an element in an array.
+date: 20-12-2019
 ---
 
 JavaScript, [the most popular programming language in the world](https://insights.stackoverflow.com/survey/2019#technology), is a mess. There are many article (or [repositories](http://bit.ly/wtfjavascript)) on the web about how peculiar or counter-intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. I think most of its critics loved the language at some point in their lives, but are now too cool or sophisticated to admit it. I, personally, use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler.
