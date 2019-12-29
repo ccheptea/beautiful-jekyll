@@ -7,7 +7,7 @@ subtitle: >-
   all indices of an element in an array.
 ---
 
-JavaScript is a mess. There are countless articles on the web about how peculiar or counter intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. I use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler. 
+JavaScript is a mess. There are countless articles on the web about how peculiar or counter intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. Actually, I think most people love the language, but are too cool or sophisticated to admit it. I use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler.
 
 But even if JavaScript is so widely and wildly used, sometimes it feels incomplete and forces you to break a function chain or implement a basic functionality from the ground up. Here are four functions that I wish were readily available in JavaScript. I will provide usage examples and possible implementations for each of them.
 
@@ -146,7 +146,7 @@ Array.prototype.binarySearch = function(comparator){
 
 ## Number.rangeTo()
 
-Generating a list of integers can be very useful. You may want to generate a list of sample data for your tests, or coordinates for your cool game. You can do it using a `for` loop, but smarter languages have the concept of range. Here's how Swift creates a range of integers: `let myRange 1..10`. `myRange` can be used as a collection of integers that you can manipulate as you would a good old array. JavaScript doesn't provide this, but it seems like a common enough feature that should be part of any programming language.
+Generating a list of integers can be very useful. You may want to generate a list of sample data for your tests, or coordinates for your cool game. You can do it using a `for` loop, but smarter languages have the concept of range. Here's how one can define a range of integers in Swift: `let myRange 1..10`. `myRange` can be used as a collection of integers that you can manipulate as you would a good old array. JavaScript doesn't provide this, but it seems like a common enough feature that should be part of any programming language.
 
 ### Usage
 
@@ -178,6 +178,8 @@ Number.prototype.rangeTo = function (toValue){
   return values
 }
 ```
+
+
 
 
 
