@@ -36,7 +36,7 @@ output:
 3
 */
 
-[{name: "Bob", name: "Jane", name: "Bob"}]
+[{name: "Bob"}, {name: "Jane"}, {name: "Bob"}]
     .distinct(person => person.name)
     .forEach(x => console.log(x)) 
 /*
@@ -86,7 +86,7 @@ output:
 4
 */
 
-[{name: "Bob", name: "Jane", name: "Bob"}]
+[{name: "Bob"}, {name: "Jane"}, {name: "Bob"}]
     .indicesOf(person => person.name)
     .forEach(x => console.log(x)) 
 /*
