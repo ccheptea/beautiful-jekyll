@@ -18,6 +18,7 @@ Do a simple search on how to get the distinct values in a collection in JavaScri
 Here's how I see the distinct method in JavaScript.
 
 ### Usage
+
 ``` javascript
 [1, 2, 3, 1, 2, 3]
     .distinct()
@@ -41,6 +42,7 @@ output:
 ```
 
 ### Possible implementation
+
 ```javascript
 Array.prototype.distinct = function(selector){
   if (selector === 'undefined'){
@@ -62,7 +64,6 @@ Array.prototype.distinct = function(selector){
   })
 }
 ```
-
 
 
 ## Array.indicesOf()
@@ -90,7 +91,8 @@ output:
 */
 ```
 
-### Possible implementation 
+### Possible implementation
+
 ```javascript
 Array.prototype.indicesOf = function(test){
   if(typeof(test) === "function"){
@@ -107,12 +109,12 @@ Array.prototype.indicesOf = function(test){
 }
 ```
 
-
 ## Array.binarySearch()
 
-Similar to `.distinct()`, running a binary search may be something you would like to use more often but cannot without some extra work. Binary search looks for a given element in a sorted array and returns it's index, and `-1` if missing. It does the same thing as `.indexOf()` but a lost faster. And since, it is such a well known and basic algorithm, it makes a lot of sense to have it built-in along with the sorting algorithms. I was pleased to find it in Kotlin. Kudos to Kotlin team.
+Similar to `.distinct()`, running a binary search may be something you would like to use more often but cannot without some extra work. Binary search looks for a given element in a sorted array and returns it's index, and `-1` if missing. It does the same thing as `.indexOf()` but a lost faster. And since, it is such a well known and basic algorithm, it makes a lot of sense to have it built-in along with the sorting algorithms. I was pleased to find it in Kotlin. Kudos to the Kotlin team.
 
 ### Usage
+
 ```javascript
 let index = [1, 2, 3, 4, 5, 5, 7].binarySearch(x => x - 7)
 console.log(index)
@@ -123,6 +125,7 @@ output:
 ```
 
 ### Possible implementation
+
 ```javascript
 Array.prototype.binarySearch = function(comparator){
   let left = 0, right = this.length - 1
@@ -141,8 +144,8 @@ Array.prototype.binarySearch = function(comparator){
 }
 ```
 
-
 ## Number.rangeTo()
+
 
 
 
