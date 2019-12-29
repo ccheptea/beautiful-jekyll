@@ -2,7 +2,7 @@
 layout: post
 published: false
 title: 4 useless functions I wish JavaScript offered out of the box
-date: 12-20-2019
+date: '2019-12-29'
 tags:
   - javascript
   - indexOf
