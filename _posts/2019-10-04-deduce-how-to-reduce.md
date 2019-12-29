@@ -23,19 +23,19 @@ Here's how I see the distinct method in JavaScript.
     .distinct()
 	.forEach(x => console.log(x)) 
 /*
-	output:
-    1
-    2
-    3
+output:
+1
+2
+3
 */
 
 [{name: "Bob", name: "Jane", name: "Bob"}]
     .distinct(person => person.name)
 	.forEach(x => console.log(x)) 
 /*
-	output:
-    { name: 'Bob' }
-    { name: 'Jane' }
+output:
+{ name: 'Bob' }
+{ name: 'Jane' }
 */
 
 ```
@@ -75,18 +75,18 @@ You're familiar with `.indexOf`. It returns the index of the first appearance fo
     .indicesOf(2)
 	.forEach(x => console.log(x)) 
 /*
-	output:
-    1
-    4
+output:
+1
+4
 */
 
 [{name: "Bob", name: "Jane", name: "Bob"}]
     .indicesOf(person => person.name)
 	.forEach(x => console.log(x)) 
 /*
-	output:
-    0
-    2
+output:
+0
+2
 */
 ```
 
@@ -109,6 +109,38 @@ Array.prototype.indicesOf = function(test){
 
 
 ## Array.binarySearch()
+
+Similar to `.distinct()`, running a binary search may be something you would like to use more often but cannot without some extra work. Binary search looks for a given element in a sorted array and returns it's index, and `-1` if missing. It does the same thing as `.indexOf()` but a lost faster. And since, it is such a well known and basic algorithm, it makes a lot of sense to have it built-in along with the sorting algorithms. I was pleased to find it in Kotlin. Kudos to Kotlin team.
+
+### Usage
+```javascript
+let index = [1, 2, 3, 4, 5, 5, 7].binarySearch(x => x - 7)
+console.log(index)
+/*
+output:
+6
+*/
+```
+
+### Possible implementation
+```javascript
+Array.prototype.binarySearch = function(comparator){
+  let left = 0, right = this.length - 1
+  while(left <= right){
+    let mid = Math.floor((right + left)/ 2)
+    let cmp = comparator(this[mid])
+    if(cmp < 0){
+      left = mid + 1
+    } else if(cmp > 0){
+      right = mid - 1
+    } else{
+      return mid
+    }
+  }
+  return -1
+}
+```
+
 
 
 
