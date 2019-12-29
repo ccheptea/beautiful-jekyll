@@ -179,7 +179,7 @@ Number.prototype.rangeTo = function (toValue){
 }
 ```
 
-
+These useless functions are just the ones I recently needed, but surely there are plenty others that should make it in this list. What else do you think is worth adding?
 
 
 
