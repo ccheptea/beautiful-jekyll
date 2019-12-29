@@ -12,7 +12,7 @@ tags:
   - prototype
 ---
 
-JavaScript, [the most popular programming language in the world](https://insights.stackoverflow.com/survey/2019#technology), is a mess. There are many article (or [repositories](http://bit.ly/wtfjavascript)) on the web about how peculiar or counter-intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. I think most of its critics loved the language at some point in their lives, but are now too cool or sophisticated to admit it. I, personally, use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler.
+JavaScript, [the most popular programming language in the world](https://insights.stackoverflow.com/survey/2019#technology), is a mess. There are many articles (or [repositories](http://bit.ly/wtfjavascript)) on the web about how peculiar or counter-intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. I think most of its critics loved the language at some point in their lives, but are now too cool or sophisticated to admit it. I, personally, use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler.
 
 But even if JavaScript is so widely and wildly used, sometimes it feels incomplete and forces you to break a function chain or implement a basic functionality from the ground up. Here are four functions that I wish were readily available in JavaScript. I will provide usage examples and possible implementations for each of them.
 
@@ -73,7 +73,7 @@ Array.prototype.distinct = function(selector){
 
 ## Array.indicesOf()
 
-You're familiar with `.indexOf()`. It returns the index of the first appearance for a given value, and `-1` if no match is found. Surprisingly, I encountered situations where I needed to determine not just the first index, but all of them. It can be done with a `.reduce()`, but then I need to explain what I'm trying to achieve. I'm not a big fan of comments in code. Thus, although it seems a useless function, for the sake of expressiveness I would like to have it out of the box.
+You're familiar with `.indexOf()`. It returns the index of the first appearance for a given value, or `-1` if no match is found. Surprisingly, I encountered situations where I needed to determine not just the first index, but all of them. It can be done with a `.reduce()`, but then I need to explain what I'm trying to achieve. I'm not a big fan of comments in code. Thus, although it seems a useless function, for the sake of expressiveness I would like to have it out of the box.
 
 ### Usage 
 ```javascript
