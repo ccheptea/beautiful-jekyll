@@ -7,15 +7,16 @@ subtitle: >-
   all indices of an element in an array.
 ---
 
-JavaScript is a mess. There are countless articles on the web about how peculiar or counter intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. Actually, I think most people love the language, but are too cool or sophisticated to admit it. I use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler.
+JavaScript, [the most popular programming language in the world](https://insights.stackoverflow.com/survey/2019#technology), is a mess. There are many article (or [repositories](http://bit.ly/wtfjavascript)) on the web about how peculiar or counter-intuitive some aspects of this language are. But as much as you may hate it, you have to admit it is a handy tool if you want to quickly build a small project, prove some code works, or simply have some fun. I think most of its critics loved the language at some point in their lives, but are now too cool or sophisticated to admit it. I, personally, use it a lot for solving algorithmic problems from websites such as HackerRank or ProjectEuler.
 
 But even if JavaScript is so widely and wildly used, sometimes it feels incomplete and forces you to break a function chain or implement a basic functionality from the ground up. Here are four functions that I wish were readily available in JavaScript. I will provide usage examples and possible implementations for each of them.
 
+
 ## Array.distinct()
 
-Do a simple search on how to get the distinct values in a collection in JavaScript and you will find plenty of results from StackOverflow to blogs and tutorials. There is not doubt this is a commonly needed functionality. So, why isn't it built-in? Kotlin, for instance has two distinct methods: `distinct` and `distinctby`. The latter allows you to get distinct elements by a specific property. 
+Do a simple search on how to get the distinct values in a collection in JavaScript and you will find plenty of results from StackOverflow to blogs and tutorials. There is no doubt this is a commonly needed functionality. So, why isn't it built-in? Kotlin, for instance, has two distinct methods: `distinct` and `distinctby`. The latter allows you to get distinct elements by a specific property. 
 
-Here's how I see the distinct method in JavaScript.
+Here's how I see the `.distinct()` method in JavaScript.
 
 ### Usage
 
@@ -65,10 +66,9 @@ Array.prototype.distinct = function(selector){
 }
 ```
 
-
 ## Array.indicesOf()
 
-You're familiar with `.indexOf`. It returns the index of the first appearance for a given value, and `-1` if no match is found. I encountered several times the need to get not just the first index, but all indices. It can be done with a `.reduce()`, but then you'll need to explain what you're trying to achieve. I'm not a big fan of comments in code. So, for the sake of expressiveness I would like to be able to do the following.
+You're familiar with `.indexOf()`. It returns the index of the first appearance for a given value, and `-1` if no match is found. Surprisingly, I encountered situations where I needed to determine not just the first index, but all of them. It can be done with a `.reduce()`, but then I need to explain what I'm trying to achieve. I'm not a big fan of comments in code. Thus, although it seems a useless function, for the sake of expressiveness I would like to have it out of the box.
 
 ### Usage 
 ```javascript
@@ -111,7 +111,7 @@ Array.prototype.indicesOf = function(test){
 
 ## Array.binarySearch()
 
-Similar to `.distinct()`, running a binary search may be something you would like to use more often but cannot without some extra work. Binary search looks for a given element in a sorted array and returns it's index, and `-1` if missing. It does the same thing as `.indexOf()` but a lost faster. And since, it is such a well known and basic algorithm, it makes a lot of sense to have it built-in along with the sorting algorithms. I was pleased to find it in Kotlin. Kudos to the Kotlin team.
+Similar to `.distinct()`, running a binary search may be something you would like to use more often but cannot without some extra work. Binary search looks for a given element in a sorted array and returns it's index, or `-1` if missing. It does the same thing as `.indexOf()` but a lot faster. Since it is such a well known and basic algorithm, it makes a lot of sense to have it built-in along with the sorting algorithms. I was pleased to find it in Kotlin. Kudos to the Kotlin team.
 
 ### Usage
 
@@ -146,7 +146,7 @@ Array.prototype.binarySearch = function(comparator){
 
 ## Number.rangeTo()
 
-Generating a list of integers can be very useful. You may want to generate a list of sample data for your tests, or coordinates for your cool game. You can do it using a `for` loop, but smarter languages have the concept of range. Here's how one can define a range of integers in Swift: `let myRange 1..10`. `myRange` can be used as a collection of integers that you can manipulate as you would a good old array. JavaScript doesn't provide this, but it seems like a common enough feature that should be part of any programming language.
+You may find generating a list of integers a useful functionality. It can be sample data for your tests, or coordinates for your cool game. You can do it using a `for` loop, but smarter languages have the concept of range. Here's how one can define a range of integers in Swift: `let myRange = 1..10`. Now `myRange` can be used as a collection of integers that you can manipulate as you would a good old array. JavaScript doesn't provide this, but it seems like a common enough feature that should be part of any programming language.
 
 ### Usage
 
