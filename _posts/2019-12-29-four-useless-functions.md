@@ -28,7 +28,7 @@ Here's how I see the `.distinct()` method in JavaScript.
 ``` javascript
 [1, 2, 3, 1, 2, 3]
     .distinct()
-	.forEach(x => console.log(x)) 
+    .forEach(x => console.log(x)) 
 /*
 output:
 1
@@ -38,7 +38,7 @@ output:
 
 [{name: "Bob", name: "Jane", name: "Bob"}]
     .distinct(person => person.name)
-	.forEach(x => console.log(x)) 
+    .forEach(x => console.log(x)) 
 /*
 output:
 { name: 'Bob' }
@@ -79,7 +79,7 @@ You're familiar with `.indexOf()`. It returns the index of the first appearance 
 ```javascript
 [1, 2, 3, 1, 2, 3]
     .indicesOf(2)
-	.forEach(x => console.log(x)) 
+    .forEach(x => console.log(x)) 
 /*
 output:
 1
@@ -88,7 +88,7 @@ output:
 
 [{name: "Bob", name: "Jane", name: "Bob"}]
     .indicesOf(person => person.name)
-	.forEach(x => console.log(x)) 
+    .forEach(x => console.log(x)) 
 /*
 output:
 0
