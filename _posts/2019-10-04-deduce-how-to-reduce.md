@@ -146,6 +146,40 @@ Array.prototype.binarySearch = function(comparator){
 
 ## Number.rangeTo()
 
+Generating a list of integers can be very useful. You may want to generate a list of sample data for your tests, or coordinates for your cool game. You can do it using a `for` loop, but smarter languages have the concept of range. Here's how Swift creates a range of integers: `let myRange 1..10`. `myRange` can be used as a collection of integers that you can manipulate as you would a good old array. JavaScript doesn't provide this, but it seems like a common enough feature that should be part of any programming language.
+
+### Usage
+
+```javascript
+let myRange = (1).rangeTo(10)
+console.log(myRange)
+/*
+output:
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+*/
+let myRange2 = (-3).rangeTo(3)
+console.log(myRange2)
+/*
+output:
+[ -3, -2, -1, 0, 1, 2, 3 ]
+*/
+```
+
+### Possible implementation
+```javascript
+Number.prototype.rangeTo = function (toValue){
+  if (!Number.isInteger(this.valueOf()) || !Number.isInteger(toValue))
+    throw new Error("Only integers are allowed!")
+
+  let values = new Array()
+  for(i = this.valueOf(); i <= toValue; i++){
+    values.push(i)
+  }
+  return values
+}
+```
+
+
 
 
 
