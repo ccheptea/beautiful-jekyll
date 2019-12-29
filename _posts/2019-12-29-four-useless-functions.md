@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: 4 useless functions I wish JavaScript offered out of the box
 date: '2019-12-29'
 tags:
