@@ -67,6 +67,45 @@ Array.prototype.distinct = function(selector){
 
 ## Array.indicesOf()
 
+You're familiar with `.indexOf`. It returns the index of the first appearance for a given value, and `-1` if no match is found. I encountered several times the need to get not just the first index, but all indices. It can be done with a `.reduce()`, but then you'll need to explain what you're trying to achieve. I'm not a big fan of comments in code. So, for the sake of expressiveness I would like to be able to do the following.
+
+### Usage 
+```javascript
+[1, 2, 3, 1, 2, 3]
+    .indicesOf(2)
+	.forEach(x => console.log(x)) 
+/*
+	output:
+    1
+    4
+*/
+
+[{name: "Bob", name: "Jane", name: "Bob"}]
+    .indicesOf(person => person.name)
+	.forEach(x => console.log(x)) 
+/*
+	output:
+    0
+    2
+*/
+```
+
+### Possible implementation 
+```javascript
+Array.prototype.indicesOf = function(test){
+  if(typeof(test) === "function"){
+    return this.reduce((indices, element, index) => {
+      if (test(element)) indices.push(index)
+      return indices
+    }, [])
+  } else {
+    return this.reduce((indices, element, index) => {
+      if (element === test) indices.push(index)
+      return indices
+    }, [])
+  }
+}
+```
 
 
 ## Array.binarySearch()
