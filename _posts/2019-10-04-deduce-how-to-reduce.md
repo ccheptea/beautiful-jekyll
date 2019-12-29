@@ -142,8 +142,6 @@ Array.prototype.binarySearch = function(comparator){
 ```
 
 
-
-
 ## Number.rangeTo()
 
 
