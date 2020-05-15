@@ -10,13 +10,13 @@ tags:
   - web development
 ---
 
-I recently started working on an Elixir/Phoenix based project. Well, I'm too rusty for that, I said to myself. After many years of OOP I was about to delve into the realm of functional programming.  But, against common misconceptions, it turned out to be a very fun experience and I literally feel I'm in the safe zone now (pun intended). 
+I recently started working on an Phoenix/Elixir based project. Well, I'm too rusty for that, I said to myself. After many years of OOP I was about to delve into the realm of functional programming.  But, against common misconceptions, it turned out to be a very fun experience and I literally feel I'm in the safe zone now (pun intended). 
 
-I got so excited with this new discovery that I decided to use Elixir/Phoenix for another project of my own. The thing is, I already had the frontend somewhat prototyped in Angular 9, so all I had to do is create a Phoenix/Elixir app that serves an Angular frontend. 
+I got so excited with this new discovery that I decided to use Phoenix/Elixir for another project of my own. The thing is, I already had the frontend somewhat prototyped in Angular 9, so all I had to do is create a Phoenix/Elixir app that serves an Angular frontend. 
 
 So, let's see how we can make things work.
 
-### 1. Create the Elixir/Phoenix project
+### 1. Create the Phoenix project
 
 Open you terminal and navigate to your working directory and create a new Phoenix project. We will also specify it doesn't add webpack, that will be taken care of by Angular.
 
