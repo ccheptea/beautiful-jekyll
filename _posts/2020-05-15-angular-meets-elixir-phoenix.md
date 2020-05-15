@@ -201,7 +201,7 @@ We are ready to do some tests. In your root folder run `npm install` to install 
 Once the build is done you should see a bunch colorful lines in your terminal, representing the built files. But most importantly, open your editor and check the `priv/static/frontend` folder. You should be able to see all the files generated in the previous step by Angular.
 
 ### 4. Tying things together
-
+{: style="margin-bottom:20px;"}
 #### 4.1 Import sources
 
 Now that we have all the frontend files, we need to tell Phoenix to serve them. 
@@ -261,7 +261,7 @@ plug Plug.Static,
 You can also remove the items that are not used anymore (`css fonts images js ...`)
 
 ### 5. Run and Watch
-
+{: style="margin-bottom:20px;"}
 #### 5.1 Run the server
 
 We're all set. Run `mix phx.server` and open the browser. If all went well, you should see the `app.component` rendered. You may also want to double check that the frontend are generated, if not run `ng build` before starting the server.
