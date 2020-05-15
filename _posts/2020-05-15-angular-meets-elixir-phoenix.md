@@ -239,7 +239,7 @@ Open the file and replace the entire `<body>` with the the following lines:
 
 #### 4.2 Add the base path
 
-Angular also requires `<base href="/">` tag. Add it as a child element to `<head>`.
+Angular also requires a `<base href="/">` tag. Add it as a child element to `<head>`.
 
 ```html
 <head>
