@@ -1,7 +1,11 @@
 ---
 layout: post
-published: false
-title: Angular meets Elixir/Phoenix
+published: true
+title: Angular meets Phoenix/Elixir
+date: '2020-05-15'
+tags:
+  - angular 9
+  - phoenix/elixir
 ---
 
 I recently started working on an Elixir/Phoenix based project. Well, I'm too rusty for that, I said to myself. After many years of OOP I was about to delve into the realm of functional programming.  But, against common misconceptions, it turned out to be a very fun experience and I literally feel I'm in the safe zone now (pun intended). 
