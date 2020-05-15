@@ -44,8 +44,7 @@ Note: If Angular initialized a git repo and installed the default node_modules (
 Don't forget to add `/node_modules` to your main `.gitignore` file.
 
 ### 3. Building Angular sources  
-  
-  
+{: style="height:20px;"}
 #### 3.1 Update the source paths
 
 Because we moved some files around, we must to update the `angular.json` file such that each declared path reflects the new location. In our case we have to add the `frontend/` prefix in several places. Check the following gist as a reference.
@@ -182,7 +181,7 @@ Because we moved some files around, we must to update the `angular.json` file su
 }
 ```
 {: style="height:300px; overflow: scroll"}  
-
+{: style="height:20px;"} 
 #### 3.2 Set the frontend build output path
 
 When Angular builds the project it creates a bunch of files that will end up in your users' browsers. However, Phoenix has no idea whatsoever about those files unless we tell it about them. 
