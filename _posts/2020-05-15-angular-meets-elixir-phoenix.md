@@ -51,7 +51,7 @@ Don't forget to add `/node_modules` to your main `.gitignore` file.
 Because we moved some files around, we must to update the `angular.json` file such that each declared path reflects the new location. In our case we have to add the `frontend/` prefix in several places. Check the following gist as a reference.
 
 {% gist f117fa7073444934ffcfe687188f9ffd %}
-
+{: style="height:300px; overflow: scroll"}
 
 #### 3.2 Set the frontend build output path
 
@@ -81,7 +81,6 @@ Angular is a single page application, which is why there is an `index.html` file
 
 Open the file and replace the entire `<body>` with the the following lines:
 
-{:refdef style="height:300px; overflow: scroll"}
 
 ```html
 <body>
@@ -106,8 +105,6 @@ Open the file and replace the entire `<body>` with the the following lines:
     <script  src="<%= Routes.static_path(@conn, "/frontend/main.js")  %>"  type="module"></script>
 </body>
 ```
-
-{: refdef}
 
 #### 4.2 Add the base path
 
