@@ -43,9 +43,9 @@ Note: If Angular initialized a git repo and installed the default node_modules (
 
 Don't forget to add `/node_modules` to your main `.gitignore` file.
 
-### 3. Building Angular sources
-
-
+### 3. Building Angular sources  
+  
+  
 #### 3.1 Update the source paths
 
 Because we moved some files around, we must to update the `angular.json` file such that each declared path reflects the new location. In our case we have to add the `frontend/` prefix in several places. Check the following gist as a reference.
