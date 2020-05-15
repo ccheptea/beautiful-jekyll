@@ -50,7 +50,10 @@ Don't forget to add `/node_modules` to your main `.gitignore` file.
 
 Because we moved some files around, we must to update the `angular.json` file such that each declared path reflects the new location. In our case we have to add the `frontend/` prefix in several places. Check the following gist as a reference.
 
+{:refdef: style="height: 300px; overflow: scroll;"}
 {% gist f117fa7073444934ffcfe687188f9ffd %}
+{: refdef}
+
 
 #### 3.2 Set the frontend build output path
 
