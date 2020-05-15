@@ -181,7 +181,7 @@ Because we moved some files around, we must to update the `angular.json` file su
   }
 }
 ```
-{: style="height:300px; overflow: scroll"}
+{: style="height:300px; overflow: scroll"}  
 
 #### 3.2 Set the frontend build output path
 
