@@ -279,7 +279,7 @@ config :phoenix_angular, PhoenixAngularWeb.Endpoint,
     check_origin:  false,
     watchers: [
         ng: ["build", "--watch"] # <- this one
-	]
+    ]
 ```
 
 Earlier we added two sets of files in the `body` element. The first set is created when building the files statically (and will end up in production), whereas the second is generated when building and watching files. This seems like a bug, but the second set is used for Angular differential loading, that is building files a lot faster to save development time.
