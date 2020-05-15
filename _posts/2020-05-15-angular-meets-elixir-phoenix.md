@@ -50,6 +50,7 @@ Don't forget to add `/node_modules` to your main `.gitignore` file.
 
 Because we moved some files around, we must to update the `angular.json` file such that each declared path reflects the new location. In our case we have to add the `frontend/` prefix in several places. Check the following gist as a reference.
 
+[angular.json](https://github.com/ccheptea/phoenix-angular-template/blob/master/angular.json)
 ```json
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
