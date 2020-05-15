@@ -82,25 +82,25 @@ Open the file and replace the entire `<body>` with the the following lines:
 
 ```html
 <body>
-	<app-root></app-root>
-	<!-- Files generated with `ng build` -->
-	<script  src="<%= Routes.static_path(@conn, "/frontend/runtime-es2015.js")  %>" type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/runtime-es5.js")  %>"  nomodule  defer></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/polyfills-es5.js")  %>"  nomodule  defer></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/polyfills-es2015.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/styles-es2015.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/styles-es5.js")  %>"  nomodule  defer></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/vendor-es2015.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/vendor-es5.js")  %>"  nomodule  defer></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/main-es2015.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/main-es5.js")  %>"  nomodule  defer></script>
+    <app-root></app-root>
+    <!-- Files generated with `ng build` -->
+    <script  src="<%= Routes.static_path(@conn, "/frontend/runtime-es2015.js")  %>" type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/runtime-es5.js")  %>"  nomodule  defer></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/polyfills-es5.js")  %>"  nomodule  defer></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/polyfills-es2015.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/styles-es2015.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/styles-es5.js")  %>"  nomodule  defer></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/vendor-es2015.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/vendor-es5.js")  %>"  nomodule  defer></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/main-es2015.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/main-es5.js")  %>"  nomodule  defer></script>
 
-	<!-- Files generated with `ng build --watch` -->
-	<script  src="<%= Routes.static_path(@conn, "/frontend/polyfills.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/styles.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/runtime.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/vendor.js")  %>"  type="module"></script>
-	<script  src="<%= Routes.static_path(@conn, "/frontend/main.js")  %>"  type="module"></script>
+    <!-- Files generated with `ng build --watch` -->
+    <script  src="<%= Routes.static_path(@conn, "/frontend/polyfills.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/styles.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/runtime.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/vendor.js")  %>"  type="module"></script>
+    <script  src="<%= Routes.static_path(@conn, "/frontend/main.js")  %>"  type="module"></script>
 </body>
 ```
 #### 4.2 Add the base path
@@ -109,8 +109,8 @@ Angular also requires `<base href="/">` tag. Add it as a child element to `<head
 
 ```html
 <head>
-	<!-- other elements -->
-	<base  href="/">
+    <!-- other elements -->
+    <base  href="/">
 </head>
 ```
 
@@ -120,10 +120,10 @@ Open the `lib/pheonix_angular_web/endpoint.ex` and locate the configuration of t
 
 ```elixir
 plug Plug.Static,
-	at:  "/",
-	from:  :phoenix_angular,
-	gzip:  false,
-	only:  ~w(css fonts images js favicon.ico robots.txt frontend) # <- here
+    at:  "/",
+    from:  :phoenix_angular,
+    gzip:  false,
+    only:  ~w(css fonts images js favicon.ico robots.txt frontend) # <- here
 ```
 
 You can also remove the items that are not used anymore (`css fonts images js ...`)
@@ -140,12 +140,12 @@ Right now it is too much work to rebuild and restart the server each time we mak
 
 ```elixir
 config :phoenix_angular, PhoenixAngularWeb.Endpoint,
-	http: [port:  4000],
-	debug_errors:  true,
-	code_reloader:  true,
-	check_origin:  false,
-	watchers: [
-		ng: ["build", "--watch"] # <- this one
+    http: [port:  4000],
+    debug_errors:  true,
+    code_reloader:  true,
+    check_origin:  false,
+    watchers: [
+        ng: ["build", "--watch"] # <- this one
 	]
 ```
 
