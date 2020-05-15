@@ -34,7 +34,7 @@ For the sake of simplicity, lets move `angular.json` and `package.json` from the
 
 By now our project structure should look similar to this:
 
-![project file structure](https://github.com/ccheptea/ccheptea.github.io/blob/master/img/pheonix_angular_tree.png?raw=true){:max-height="300px"}
+![project file structure](https://github.com/ccheptea/ccheptea.github.io/blob/master/img/pheonix_angular_tree.png?raw=true){:height="300px"}
 
 
 #### 2.2 Remove unused files
