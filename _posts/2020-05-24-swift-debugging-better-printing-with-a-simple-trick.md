@@ -89,6 +89,6 @@ fileprivate func log(_ items: [Any], separator: String = " ", terminator: String
 
 ```
 
-Note: unfortunately XCode doesn't allow text coloring in the console. (Or I didn't find how to do it yet)
+**Note\***: unfortunately XCode doesn't allow text coloring in the console. (Or I didn't find how to do it yet)
 
-Note 2: The above code is a simple/lightweight and straightforword solution that doesn't require including any external package. If you want something more sophisticated you can check some other tools like this one: https://github.com/SwiftyBeaver/SwiftyBeaver
+**Note\*\***: The above code is a simple/lightweight and straightforword solution that doesn't require including any external package. If you want something more sophisticated you can check some other tools like this one: https://github.com/SwiftyBeaver/SwiftyBeaver
