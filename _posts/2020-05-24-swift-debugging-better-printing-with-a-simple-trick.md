@@ -1,7 +1,15 @@
 ---
 layout: post
-published: false
+published: true
 title: "Swift Debugging: better printing with a simple trick \U0001F98B\U0001F98E⚠️❌"
+subtitle: 'Add timestamps, source and emoji''s to Swift logs.'
+date: '2020-05-24'
+tags:
+  - Swift
+  - iOS
+  - XCode
+  - debugging
+  - logs
 ---
 
 Coming from Android Development to iOS/Swift, one might expect debugging to be somewhat similar. It is to some extent. One thing that I miss while doing iOS Development is the logging capabilities Android Studio offers, which are available out of the box.
@@ -28,7 +36,7 @@ which print logs like this:
 15:38:21.816 ❌ TabViewScreen.init():49 Ooops, you've got errors!
 ```
 
-The idea was to preserve the `print` signature, since that's what I was used to, while using more descriptive names as well.
+The idea was to preserve the `print` signature, since that's what I was used to, while using more descriptive names.
 
 Here's a gist with the code I'm using, but feel free to customizing to your own needs. 
 
