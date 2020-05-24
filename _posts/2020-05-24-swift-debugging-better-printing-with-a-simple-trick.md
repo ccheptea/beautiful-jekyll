@@ -5,9 +5,9 @@ title: "Swift Debugging: better printing with a simple trick \U0001F98B\U0001F98
 subtitle: 'Add timestamps, source and emoji''s to Swift logs.'
 date: '2020-05-24'
 tags:
-  - Swift
+  - swift
   - iOS
-  - XCode
+  - xcode
   - debugging
   - logs
 ---
