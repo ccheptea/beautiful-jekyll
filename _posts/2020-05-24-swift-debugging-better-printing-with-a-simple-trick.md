@@ -38,8 +38,57 @@ which print logs like this:
 
 The idea was to preserve the `print` signature, since that's what I was used to, while using more descriptive names.
 
-Here's a gist with the code I'm using, but feel free to customizing to your own needs. 
+Here's a gist with the code I'm using, but feel free to customizing to your own needs.
 
-{% gist 324e40dc905c961d87a62f65f7ba0462 %}
+[_logging.swift](https://gist.github.com/ccheptea/324e40dc905c961d87a62f65f7ba0462)
+
+```swift
+
+import Foundation
+
+fileprivate let infoMarker = "🦋"
+fileprivate let debugMarker = "🦎"
+fileprivate let warningMarker = "⚠️"
+fileprivate let errorMarker = "❌"
+
+func info(_ items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, function: String = #function) {
+    log(items, separator: separator, terminator: terminator, marker: infoMarker, file: file, function: function, line: line)
+}
+
+func debug(_ items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, function: String = #function) {
+    log(items, separator: separator, terminator: terminator, marker: debugMarker, file: file, function: function, line: line)
+}
+
+func warning(_ items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, function: String = #function) {
+    log(items, separator: separator, terminator: terminator, marker: warningMarker, file: file, function: function, line: line)
+}
+
+func error(_ items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, function: String = #function) {
+    log(items, separator: separator, terminator: terminator, marker: errorMarker, file: file, function: function, line: line)
+}
+
+fileprivate var formatter: DateFormatter = {
+    let _formatter = DateFormatter()
+    _formatter.dateFormat = "H:m:ss.SSS"
+    return _formatter
+}()
+
+fileprivate func log(_ items: [Any], separator: String = " ", terminator: String = "\n", marker: String, file: String, function: String, line: Int) {
+    let lastSlashIndex = (file.lastIndex(of: "/") ?? String.Index(utf16Offset: 0, in: file))
+    let nextIndex = file.index(after: lastSlashIndex)
+    let filename = file.suffix(from: nextIndex).replacingOccurrences(of: ".swift", with: "")
+    
+    let dateString = formatter.string(from: NSDate.now)
+    
+    let prefix = "\(dateString) \(marker) \(filename).\(function):\(line)"
+    
+    let message = items.map {"\($0)"}.joined(separator: separator)
+    print("\(prefix) \(message)", terminator: terminator)
+}
+
+
+```
 
 Note: unfortunately XCode doesn't allow text coloring in the console. (Or I didn't find how to do it yet)
+
+Note 2: The above code is a simple/lightweight and straightforword solution that doesn't require including any external package. If you want something more sophisticated you can check some other tools like this one: https://github.com/SwiftyBeaver/SwiftyBeaver
