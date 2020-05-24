@@ -14,7 +14,7 @@ tags:
 
 Coming from Android Development to iOS/Swift, one might expect debugging to be somewhat similar. It is to some extent. One thing that I miss while doing iOS Development is the logging capabilities Android Studio offers, which are available out of the box.
 
-I use print() a lot while during development. I like that it is so basic and simple to use, but oftentimes I find myself doing extra work to make the logs easier to follow and dissect. Things like timestamps and types (debug/error/warning/info) are things that make it a lot easier to filter and analyze the logs. The same goes for metadata such as class/filename, function, and line where the logs were created. 
+I use `print()` a lot while during development. I like that it is so basic and simple to use, but oftentimes I find myself doing extra work to make the logs easier to follow and dissect. Things like timestamps and types (debug/error/warning/info) are things that make it a lot easier to filter and analyze the logs. The same goes for metadata such as class/filename, function, and line where the logs were created. 
 
 This made me do a little research that resulted in a few lines of code that define the following methods:
 
