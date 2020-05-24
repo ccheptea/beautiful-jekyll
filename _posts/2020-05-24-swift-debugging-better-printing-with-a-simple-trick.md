@@ -36,9 +36,9 @@ which print logs like this:
 15:38:21.816 ❌ TabViewScreen.init():49 Ooops, you've got errors!
 ```
 
-The idea was to preserve the `print` signature, since that's what I was used to, while using more descriptive names.
+The idea was to preserve the `print` signature since that's what I was used to while using more descriptive names.
 
-Here's a gist with the code I'm using, but feel free to customizing to your own needs.
+Here's a gist with the code I'm using, but feel free to customize to your own needs.
 
 [_logging.swift](https://gist.github.com/ccheptea/324e40dc905c961d87a62f65f7ba0462)
 
